@@ -1,4 +1,6 @@
 #!/bin/bash 
+sudo apt install -y curl
+curl https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT
 # $1 = # of seconds
 # $@ = What to print after "Waiting n seconds"
 
@@ -38,7 +40,7 @@ pueue-init() {
   while [[ $x -eq 0 ]]; do
   echo "PUEUE INIT"
   rm -f $HOME/tmp/pueuestatus.txt
-  countdown 2
+  countdown 1
   export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
   /home/linuxbrew/.linuxbrew/bin/pueue status >> $HOME/tmp/pueuestatus.txt 2>> $HOME/tmp/pueuestatus.txt
   # /home/linuxbrew/.linuxbrew/bin/pueue status
@@ -71,190 +73,92 @@ read -t 1 me
 echo "CURRENT USER: $USER"
 [[ $USER != "abraxas" ]] && echo BUTTON && read me || echo BUTTON2 && read -t 2 me
 #ts=$(date +"%s")
-#if [[ -d start2 ]]
+#if [[ -d start5 ]]
 #then
-#  mv start2 start2-backup-$ts
+#  mv start5 start5-backup-$ts
 #fi
-
-###############BAHSFULL
-sudo apt-get install wget -y
-wget https://github.com/wagoodman/bashful/releases/download/v0.0.10/bashful_0.0.10_linux_amd64.deb
-sudo apt-get install ./bashful_0.0.10_linux_amd64.deb -y
-echo; echo
-echo "###########################"
-bashful -v; 
-echo "###########################"
-echo; echo
-############# BASHFUL READY
-countdown 2
+countdown 1
 echo "#####################################################################"
-echo "                     CLONE START2 REPOSITORY   "
+echo "                     CLONE start5 REPOSITORY   "
 echo "#####################################################################"
 echo; sleep 2
-echo; echo "CLONE START2 REPOSITORY"; sleep $myspeed
-
+echo; echo "CLONE start5 REPOSITORY"; sleep $myspeed
 ##### BASH START
-wget https://raw.githubusercontent.com/abraxas678/start2/main/git-clone-start2.yml
-bashful run git-clone-start2.yml
-rm -f git-clone-start2.yml
+rm -rf $HOME/start5
+sudo apt install -y git
+git clone https://github.com/abraxas678/start5.git
+
 #sudo apt-get install git -y | tail -f -n5
 #git config --global user.name abraxas678
 #git config --global user.email abraxas678@gmail.com
 #sleep $myspeed
 #sudo ls >/dev/null
 #cd $HOME
-#git clone https://github.com/abraxas678/start2.git | tail -f -n5; echo
-#source $HOME/start2/color.dat
-#source $HOME/start2/path.dat
+#git clone https://github.com/abraxas678/start5.git | tail -f -n5; echo
+#source $HOME/start5/color.dat
+#source $HOME/start5/path.dat
 ##### BASH END
 echo "#####################################################################"
 echo "                      CHECKING HARDWARE"
 echo "#####################################################################"
-echo; sleep 2
+echo
 ###   df /home grösser 50GB?
-chmod +x $HOME/start2/*.sh
-[[ $(df -h /home  |awk '{ print $2 }' |tail -n1 | sed 's/G//' | sed 's/\./,/') -lt 50 ]] && /bin/bash $HOME/start2/new-disk.sh
-
-echo "#####################################################################"
-echo "              COLLECTING INSTALLATION PREFERENCES"
-echo "#####################################################################"
-echo; sleep 2
-x=0; tput sc; while [[ $x -eq 0 ]]; do
-  echo; printf "DEFINE SPEED (default=2): "; read myspeed; echo
-  echo "speed [$myspeed]"
-  [[ ${#myspeed} -gt 0 ]] && x=1 || tput rc
-done
-[[ $(echo $RESTIC_PASSWORD | md5sum) != *"81a8c96e402c1647469856787d5c8503"* ]] && echo && printf "restic password: >>> " && read -n 4 myresticpw && export RESTIC_PASSWORD=$myresticpw
-x=0; tput sc; while [[ $x -eq 0 ]]; do
-  [[ ${#myresticpw} -gt 0 ]] && x=1 || echo; tput rc; read -p "restic pw: " myresticpw
-done
-export RESTIC_REPOSITORY=rclone:gd:restic
-x=0; tput sc; while [[ $x -eq 0 ]]; do
-  read -p "RC PW: " rcpw 
-  [[ ${#rcpw} -gt 0 ]] && x=1 || tput rc
-done
-echo $rcpw > ~/rcpw
-echo "#####################################################################"
-echo "                INSTALL LSOF AND SETUP TAILSCALE"
-echo "#####################################################################"
-echo; sleep 2
-sudo apt install lsof -y
-curl -fsSL https://tailscale.com/install.sh | sh | tail -f -n5
-sudo systemctl start tailscaled | tail -f -n5
-sudo tailscale up | tail -f -n5
-sudo tailscale up --ssh
-sudo systemctl enable tailscaled
-sudo systemctl start tailscaled
-echo; echo "sudo tailscale file cp ~/.config/rclone/rclone.conf $(hostname):"
-echo;
-curl "https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=razer&clipboard=sudo%20tailscale%20file%20cp%20~%2F.config%2Frclone%2Frclone.conf%2$(hostname)%3A"
-countdown 20
-[[ $(/home/linuxbrew/.linuxbrew/bin/pueue -V) = *"Pueue client"* ]] && MY_PUEUE_INST=1 || MY_PUEUE_INST=0
-echo; echo MY_PUEUE_INST $MY_PUEUE_INST
+chmod +x $HOME/start5/*.sh
+[[ $(df -h /home  |awk '{ print $2 }' |tail -n1 | sed 's/G//' | sed 's/\./,/') -lt 50 ]] && /bin/bash $HOME/start5/new-disk.sh
+sudo apt install xclip -y
+echo 
+echo execute on current computer
+echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P; 
+echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P | xclip
 countdown 2
-[[ $MY_PUEUE_INST -eq 1 ]] && pueue-init
-[[ $MY_PUEUE_INST -eq 1 ]] && /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- rclone copy df:bin/ $HOME/bin -P --update --password-command="cat /home/abraxas/rcpw"
 echo "#####################################################################"
 echo "                   SYSTEM UPDATE AND UPGRADE"
 echo "#####################################################################"
-echo; sleep 2
 echo; echo "sudo apt-get update && sudo apt-get upgrade -y"; 
-countdown 2 
-[[ $MY_PUEUE_INST -eq 1 ]] && /home/linuxbrew/.linuxbrew/bin/pueue parallel 1 -g system-setup
-[[ $MY_PUEUE_INST -eq 1 ]] && /home/linuxbrew/.linuxbrew/bin/pueue start -g system-setup
-[[ $MY_PUEUE_INST -eq 1 ]] && /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- sudo apt-get update && sudo apt-get upgrade -y ||  sudo apt-get update && sudo apt-get upgrade -y
-echo; countdown 2
-[[ $MY_PUEUE_INST -eq 1 ]] && /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- sudo apt-get install python3-pip firefox-esr -y || sudo apt-get install python3-pip firefox-esr -y
-echo; countdown 2
-echo "#####################################################################"
-echo "                          INSTALL BREW"
-echo "#####################################################################"
-echo; sleep 2
-countdown 2
-  
-  export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" | tail -f -n5
-  echo; countdown 2
-  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shelle /home/linuxbrew/.linuxbrew/binnv)"' >> /home/abrax/.zprofile
-  [[ $MY_PUEUE_INST -eq 1 ]] && /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" || eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" | tail -f -n5
-  [[ $MY_PUEUE_INST -eq 1 ]] && /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- sudo apt-get install build-essential -y || sudo apt-get install build-essential -y | tail -f -n5
-  export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-  [[ $MY_PUEUE_INST -eq 1 ]] && /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- brew install gcc || brew install gcc | tail -f -n5
-echo "#####################################################################"
-echo "                           INSTALL PUEUE"
-echo "#####################################################################"
-echo; sleep 2
-  countdown 2
-  brew install pueue | tail -f -n5
-  echo; echo "INSTALL RICH-CLI"
-  brew install rich | tail -f -n5
-  export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-  /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --print "rich installed" -u
-  countdown 2
-  sudo chown -R abraxas: /run/user
-  sudo chown -R abraxas: /home
-  sudo chmod +x /home/abraxas/.cargo/bin/pueue
-  sudo chmod +x /home/abraxas/.cargo/bin/pueued
-  sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueue
-  sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueued
-  source $HOME/start2/path.dat
-  echo; echo "pueued -d"
-  /home/linuxbrew/.linuxbrew/bin/pueued -d
-  /home/linuxbrew/.linuxbrew/bin/pueue start
-  #/home/linuxbrew/.linuxbrew/bin/pueue
+sudo apt-get update && sudo apt-get upgrade -y
+countdown 1
+echo getting rclone.conf
+curl https://rclone.org/install.sh | sudo bash
+cd $HOME/.config/rclone/
+wget https://ra.dmw.zone/rclone.conf
+[[ $(ls -la rclone.conf  | awk '{ print $5 }') -gr 10000 ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
+sudo apt install restic -y
+mkdir $HOME/start5/restic
+cd $HOME/start5/restic
+restic restore latest --files-from restic_include.txt 
+rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"
+rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PASS"
 
-x=0
-rm -f $HOME/tmp/pueuestatus.txt
-pueue-init
+cd $HOME/start5
+chmod +x *.sh
+./tailscale.sh
+./brew-main.sh
+./brew-apps.sh
+./apt-apps.sh
+./python-apps.sh
+./ssh.sh
 
-#while [[ $x -eq 0 ]]; do
-#echo "PUEUE INIT"
-#countdown 2
-#export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-#/home/linuxbrew/.linuxbrew/bin/pueue status >>pueuestatus.txt 2>>pueuestatus.txt
-#[[ $(cat $HOME/tmp/pueuestatus.txt) = *"Failed to initialize client"* ]] &&  /home/linuxbrew/.linuxbrew/bin/pueued -d && sleep 2 &&  /home/linuxbrew/.linuxbrew/bin/pueue status
-#[[ $(cat $HOME/tmp/pueuestatus.txt) = *"Permission denied"* ]] && sudo chown -R abraxas: /run/user && sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueue &&  /home/linuxbrew/.linuxbrew/bin/pueued -d && sleep 2 &&  /home/linuxbrew/.linuxbrew/bin/pueue status
-#[[ $(cat $HOME/tmp/pueuestatus.txt) = *"Group"* ]] && x=1
-#printf $HOME/tmp/pueuestatus.txt; cat $HOME/tmp/pueuestatus.txt
-#sleep 1
-#done
-rm -f $HOME/tmp/pueuestatus.txt
-/home/linuxbrew/.linuxbrew/bin/pueue status | tails -n 10
-trenner Pueue initialized
-countdown 2
-  ######################################## BREW BASED SOFTWARE ########################################
-  /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --panel-style blue -style green --print "INSTALL BREW BASED SOFTWARE"
-  countdown 2
-  pueue group add system-setup
-  pueue parallel 1 -g system-setup 
-  pueue add -g system-setup -- brew install thefuck
-  pueue add -g system-setup -- brew install gcalcli
-  pueue add -g system-setup -- brew install fzf
-  pueue add -g system-setup -- brew install just 
-  pueue add -g system-setup -- 'yes | $(brew --prefix)/opt/fzf/install'
-  echo; pueue status -g system-setup 
-  countdown 5
- /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue -u
-################################################################################################
+exit
+
 
   #echo "$EDITOR=/usr/bin/nano" >> $HOME/.bashrc
   source $HOME/.bashrc
   /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title tmux tmuxiator --print "$(sudo apt-get install -y tmux tmuxinator)" 
-  countdown 2
-  ############  >>>>>>>>>>>>>>>>>>>>>>>   tmux new-session -d -s "Start2" $HOME/main_script.sh
+  countdown 1
+  ############  >>>>>>>>>>>>>>>>>>>>>>>   tmux new-session -d -s "start5" $HOME/main_script.sh
   /home/linuxbrew/.linuxbrew/bin/rich -u --panel rounded --style green --panel-style blue --print "[2] INSTALL ZSH -- Oh-my-Zsh -- Antigen FRAMEWORK"; sleep $myspeed
   #############################################  [2] INSTALL ZSH -- Oh-my-Zsh -- Antigen FRAMEWORK
   /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style green --panel-style blue --title "zsh php nodejs npm plocate" --print "$(pueue add -g system-setup --  sudo apt install -y zsh php nodejs npm firefox-esr plocate)"
   pueue add -g system-setup -- 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
   pueue add -g system-setup -- 'curl -L git.io/antigen > $HOME/antigen.zsh'
-countdown 2
+countdown 1
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title unzip jq --print "$(sudo apt-get install unzip jq -y)"
 
 trenner
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded -u --style green --panel-style blue --print "CHECKING ENVIRONMENT CONDITION:"; sleep $myspeed
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style green --panel-style blue  --print "GPG"; echo; sleep $myspeed
 trenner
-countdown 2
+countdown 1
 ### >>> IF 1 O
 if [[ $(which gpg) = *"/usr/bin/gpg"* ]]
 then
@@ -278,14 +182,14 @@ else
   echo "GPG_KEYS=0"; sleep $myspeed
   trenner GPG_INSTALLED=0
   trenner GPG_KEYS=0
-  countdown 2
+  countdown 1
 ### >>> IF 1 C
 fi
 trenner
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style green --panel-style blue --print RCLONE -u
 /home/linuxbrew/.linuxbrew/bin/rich -u --print "tailscale get file"
 echo; sudo tailscale file get ~/.config/rclone/
-countdown 2
+countdown 1
 rclone copy df: $HOME --max-depth 1 --include=".zsh.env" -P --update --password-command="cat /home/abraxas/rcpw"
 source ~/.zsh.env
 #/home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --print "INSTALL AGE"
@@ -372,17 +276,17 @@ fi
 countdown 10
 trenner
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style green --panel-style blue --print "INSTALL AND SETUP RCLONE"
-countdown 2
+countdown 1
 ########################################## INSTALL & SETUP ===============================
 sleep $myspeed
 if [[ $RCLONE_INSTALL = "0" ]]
   then
   echo
   trenner "[4] SETUP RCLONE" --panel heavy
-  countdown 2
+  countdown 1
   ################################################### [4] SETUP RCLONE
   echo
-  cd $HOME/start2
+  cd $HOME/start5
   echo PWD: $PWD
   echo; sleep $myspeed
   #sudo apt install rclone -y
@@ -400,7 +304,7 @@ fi
 
 printf "${LILA}"; printf "${UL1}"
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style green --panel-style blue --print "[5] setup GPG encryption"
-countdown 2
+countdown 1
 #################################################################### [5] SETUP GPG 
 echo
 if [[ $GPG_INSTALLED = "0" ]]
@@ -492,7 +396,7 @@ fi
 
 if [[ $RCLONE_COMPLETE != "1" ]]
 then
-      cd $HOME/start2
+      cd $HOME/start5
       printf "${YELLOW}"
       echo "starting decryption"; sleep $myspeed
       printf "${NC}"; printf "${BLUE3}"
@@ -510,23 +414,23 @@ then
 fi  
 
 trenner "RCLONE DONE"
-countdown 2
+countdown 1
 
 rclone copy gd:dotfiles/.bashrc $HOME -P
 rclone copy gd:dotfiles/.zshrc $HOME -P
 rclone copy gd:dotfiles/.p10k.zsh $HOME -P
 
 trenner SOFTWARE INSTALL
-countdown 2
+countdown 1
 /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- sudo apt-get install restic exa wget -y
 ###############################################################################  [6]
 echo
 trenner SSH SETUP
-countdown 2
+countdown 1
 ###############################################################################  [7] SETUP SSH
 /home/linuxbrew/.linuxbrew/bin/rich -u --style green --panel-style blue --panel rounded --title "sudo ssh -T git@github.com" --print "$(sudo ssh -T git@github.com)"
 #sudo ssh -T git@github.com
-countdown 2
+countdown 1
 echo; trenner "successfull? (y/N)" --style red 
 read -n 1 sshresult 
 if [[ $sshresult = "y" ]]
@@ -783,14 +687,14 @@ rm -f $HOME/color.dat
 trenner AUTOREMOVE
 sudo apt autoremove -y
 
-#p $HOME/start2/dotfiles/.zshrc $HOME/
-#cp $HOME/start2/dotfiles/.p10k.zsh $HOME/
-#cp $HOME/start2/dotfiles/.taskrc $HOME/
-#cp $HOME/start2/dotfiles/pcc $HOME/bin
-#mv $HOME/start2/dotfiles/bin/* $HOME/bin/
+#p $HOME/start5/dotfiles/.zshrc $HOME/
+#cp $HOME/start5/dotfiles/.p10k.zsh $HOME/
+#cp $HOME/start5/dotfiles/.taskrc $HOME/
+#cp $HOME/start5/dotfiles/pcc $HOME/bin
+#mv $HOME/start5/dotfiles/bin/* $HOME/bin/
 echo
 rm -rf $HOME/start
-rm -rf $HME/start2
+rm -rf $HME/start5
 echo
 trenner "INSTALL TASKWARRIOR"
 pip3 install taskwarrior-inthe.am | tail -f -n5
