@@ -1,7 +1,6 @@
 #!/bin/bash 
 # $1 = # of seconds
 # $@ = What to print after "Waiting n seconds"
-
 myspeed="0.5" 
 #######################################################
 echo "version 213"; sleep $myspeed
@@ -76,6 +75,8 @@ echo "CURRENT USER: $USER"
 #  mv start5 start5-backup-$ts
 #fi
 countdown 1
+sudo mkdir /home/restic
+sudo chown abraxas: /home -R
 sudo apt install xclip -y
 echo 
 echo execute on current computer
@@ -93,6 +94,8 @@ echo; echo "CLONE start5 REPOSITORY"; sleep $myspeed
 rm -rf $HOME/start5
 sudo apt install -y git
 git clone https://github.com/abraxas678/start5.git
+cd $HOME/start5
+./bashful.sh
 
 #sudo apt-get install git -y | tail -f -n5
 #git config --global user.name abraxas678
@@ -107,29 +110,26 @@ git clone https://github.com/abraxas678/start5.git
 echo "#####################################################################"
 echo "                      CHECKING HARDWARE"
 echo "#####################################################################"
-echo
 ###   df /home grösser 50GB?
 chmod +x $HOME/start5/*.sh
 [[ $(df -h /home  |awk '{ print $2 }' |tail -n1 | sed 's/G//' | sed 's/\./,/') -lt 50 ]] && /bin/bash $HOME/start5/new-disk.sh
-countdown 2
+countdown 1
 echo "#####################################################################"
 echo "                   SYSTEM UPDATE AND UPGRADE"
 echo "#####################################################################"
 echo; echo "sudo apt-get update && sudo apt-get upgrade -y"; 
-sudo apt-get update && sudo apt-get upgrade -y
+$HOME/start5/bashfuler.sh 'sudo apt-get update && sudo apt-get upgrade -y'
 countdown 1
 
-sudo apt install restic -y
+$HOME/start5/bashfuler.sh 'sudo apt install restic -y'
 mkdir $HOME/start5/restic
 cd $HOME/start5/restic
-restic restore latest --files-from restic_include.txt 
+$HOME/start5/bashfuler.sh 'restic restore latest --files-from restic_include.txt --target /home/restic'
 
 
 
 echo getting rclone.conf
-curl https://rclone.org/install.sh | sudo bash
-cd $HOME/.config/rclone/
-wget https://ra.dmw.zone/rclone.conf
+$HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd $HOME/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
 [[ $(ls -la rclone.conf  | awk '{ print $5 }') -gr 10000 ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
 #rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"
 #rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PASS"
@@ -137,12 +137,12 @@ wget https://ra.dmw.zone/rclone.conf
 
 cd $HOME/start5
 chmod +x *.sh
-./tailscale.sh
-./brew-main.sh
-./brew-apps.sh
-./apt-apps.sh
-./python-apps.sh
-./ssh.sh
+source tailscale.sh
+source brew-main.sh
+source brew-apps.sh
+source apt-apps.sh
+source python-apps.sh
+source ssh.sh
 
 exit
 
