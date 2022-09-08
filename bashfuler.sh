@@ -19,6 +19,6 @@ while [[ $x -eq 0 ]]; do
   i=$((i+1))
 #  echo i $i
 done
-#rm -f my_bashful_line
+rm -f my_bashful_line
 bashful run $ts.yml
 rm -f $ts.yml
