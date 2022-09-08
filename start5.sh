@@ -1,6 +1,4 @@
 #!/bin/bash 
-sudo apt install -y curl
-curl https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT
 # $1 = # of seconds
 # $@ = What to print after "Waiting n seconds"
 
@@ -78,6 +76,14 @@ echo "CURRENT USER: $USER"
 #  mv start5 start5-backup-$ts
 #fi
 countdown 1
+sudo apt install xclip -y
+echo 
+echo execute on current computer
+echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P; 
+echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P | xclip
+read -p BUTTON me
+sudo apt install -y curl
+curl https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT
 echo "#####################################################################"
 echo "                     CLONE start5 REPOSITORY   "
 echo "#####################################################################"
@@ -105,11 +111,6 @@ echo
 ###   df /home grösser 50GB?
 chmod +x $HOME/start5/*.sh
 [[ $(df -h /home  |awk '{ print $2 }' |tail -n1 | sed 's/G//' | sed 's/\./,/') -lt 50 ]] && /bin/bash $HOME/start5/new-disk.sh
-sudo apt install xclip -y
-echo 
-echo execute on current computer
-echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P; 
-echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P | xclip
 countdown 2
 echo "#####################################################################"
 echo "                   SYSTEM UPDATE AND UPGRADE"
@@ -117,17 +118,22 @@ echo "#####################################################################"
 echo; echo "sudo apt-get update && sudo apt-get upgrade -y"; 
 sudo apt-get update && sudo apt-get upgrade -y
 countdown 1
+
+sudo apt install restic -y
+mkdir $HOME/start5/restic
+cd $HOME/start5/restic
+restic restore latest --files-from restic_include.txt 
+
+
+
 echo getting rclone.conf
 curl https://rclone.org/install.sh | sudo bash
 cd $HOME/.config/rclone/
 wget https://ra.dmw.zone/rclone.conf
 [[ $(ls -la rclone.conf  | awk '{ print $5 }') -gr 10000 ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
-sudo apt install restic -y
-mkdir $HOME/start5/restic
-cd $HOME/start5/restic
-restic restore latest --files-from restic_include.txt 
-rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"
-rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PASS"
+#rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"
+#rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PASS"
+
 
 cd $HOME/start5
 chmod +x *.sh

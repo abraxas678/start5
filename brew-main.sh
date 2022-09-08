@@ -15,7 +15,7 @@ countdown 1
 echo "#####################################################################"
 echo "                           INSTALL PUEUE"
 echo "#####################################################################"
-echo; sleep 2
+echo;
   countdown 1
   brew install pueue | tail -f -n5
   echo; echo "INSTALL RICH-CLI"

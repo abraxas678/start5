@@ -6,5 +6,5 @@ echo; echo
 echo "###########################"
 bashful -v; 
 echo "###########################"
-echo; echo
+echo; echo; sleep 1
 ############# BASHFUL READY
