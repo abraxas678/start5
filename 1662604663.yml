@@ -1,0 +1,109 @@
+tasks:
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
+    - name: sudo apt install restic -y
+      cmd: sudo apt install restic -y
+ 
