@@ -1,6 +1,6 @@
 #!/bin/bash
 ts=$(date +"%s")
-echo "$include: myconfig.yml" >$ts.yml
+echo '$include: myconfig.yml' >$ts.yml
 echo " " >>$ts.yml
 echo "tasks:" >>$ts.yml
 v1="$@ &&"
