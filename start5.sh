@@ -3,7 +3,7 @@
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
 #######################################################
-echo "version 215"
+echo "version 216"
 sleep $myspeed
 #######################################################
 
@@ -106,6 +106,7 @@ chmod +x *.sh
 #source $HOME/start5/color.dat
 #source $HOME/start5/path.dat
 ##### BASH END
+sudo apt-get update -y
 sudo apt install figlet -y
 echo "#####################################################################"
 figlet -f big checking hardware
