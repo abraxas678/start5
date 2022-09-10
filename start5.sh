@@ -124,7 +124,7 @@ echo; echo "sudo apt-get update && sudo apt-get upgrade -y";
 $HOME/start5/bashfuler.sh 'sudo apt-get update && sudo apt-get upgrade -y'
 countdown 1
 
-$HOME/start5/bashfuler.sh 'sudo apt install restic -y &&'
+$HOME/start5/bashfuler.sh 'sudo apt install restic -y'
 mkdir $HOME/start5/restic
 cd $HOME/start5/restic
 $HOME/start5/bashfuler.sh 'restic restore latest --files-from restic_include.txt --target /home/restic'
