@@ -8,7 +8,7 @@ echo "version 213"; sleep $myspeed
 
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
-mkdir $HOME/tmp
+mkdir $HOME/tmp >/dev/null 2>/dev/null
 
 ################################## FUNCTIONS ###########################################
 countdown() {
@@ -69,20 +69,16 @@ read -t 1 me
 [[ $USER != "abraxas" ]] && su abraxas
 echo "CURRENT USER: $USER"
 [[ $USER != "abraxas" ]] && echo BUTTON && read me || echo BUTTON2 && read -t 2 me
-#ts=$(date +"%s")
-#if [[ -d start5 ]]
-#then
-#  mv start5 start5-backup-$ts
-#fi
+
 countdown 1
-sudo mkdir /home/restic
+sudo mkdir /home/restic >/dev/null 2>/dev/null
 sudo chown abraxas: /home -R
 sudo apt install xclip -y
 echo 
 echo execute on current computer
 echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P; 
 echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P | xclip
-read -p BUTTON me
+echo; read -p BUTTON me
 sudo apt install -y curl
 curl https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT
 echo "#####################################################################"
@@ -107,15 +103,18 @@ cd $HOME/start5
 #source $HOME/start5/color.dat
 #source $HOME/start5/path.dat
 ##### BASH END
+sudo apt install figlet -y
 echo "#####################################################################"
-echo "                      CHECKING HARDWARE"
+figlet -f big checking hardware
+#echo "                      CHECKING HARDWARE"
 echo "#####################################################################"
 ###   df /home grösser 50GB?
 chmod +x $HOME/start5/*.sh
 [[ $(df -h /home  |awk '{ print $2 }' |tail -n1 | sed 's/G//' | sed 's/\./,/') -lt 50 ]] && /bin/bash $HOME/start5/new-disk.sh
 countdown 1
 echo "#####################################################################"
-echo "                   SYSTEM UPDATE AND UPGRADE"
+figlet -f big system update and upgrade
+#echo "                   SYSTEM UPDATE AND UPGRADE"
 echo "#####################################################################"
 echo; echo "sudo apt-get update && sudo apt-get upgrade -y"; 
 $HOME/start5/bashfuler.sh 'sudo apt-get update && sudo apt-get upgrade -y'
@@ -126,9 +125,7 @@ mkdir $HOME/start5/restic
 cd $HOME/start5/restic
 $HOME/start5/bashfuler.sh 'restic restore latest --files-from restic_include.txt --target /home/restic'
 
-
-
-echo getting rclone.conf
+figet -f cybersmall getting rclone.conf
 $HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd $HOME/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
 [[ $(ls -la rclone.conf  | awk '{ print $5 }') -gr 10000 ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
 #rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"

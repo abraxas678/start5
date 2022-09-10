@@ -1,6 +1,8 @@
 #!/bin/bash
 ts=$(date +"%s")
-echo "tasks:" >$ts.yml
+echo "$include: myconfig.yml" >$ts.yml
+echo " " >>$ts.yml
+echo "tasks:" >>$ts.yml
 v1="$@ &&"
 #t1=$(echo $v1 | sed 's/&&.*//' | sed 's/;.*//')
 x=0
