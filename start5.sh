@@ -3,7 +3,8 @@
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
 #######################################################
-echo "version 214"; sleep $myspeed
+echo "version 215"
+sleep $myspeed
 #######################################################
 
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
@@ -80,7 +81,8 @@ echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P;
 echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P | xclip
 echo; read -p BUTTON me
 sudo apt install -y curl
-curl https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT
+curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
+echo; 
 echo "#####################################################################"
 echo "                     CLONE start5 REPOSITORY   "
 echo "#####################################################################"
