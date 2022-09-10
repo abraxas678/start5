@@ -91,6 +91,7 @@ rm -rf $HOME/start5
 sudo apt install -y git
 git clone https://github.com/abraxas678/start5.git
 cd $HOME/start5
+chmod +x *.sh
 ./bashful.sh
 
 #sudo apt-get install git -y | tail -f -n5
