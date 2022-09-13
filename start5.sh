@@ -129,7 +129,7 @@ countdown 1
 /home/abraxas/start5/bashfuler.sh 'sudo apt install restic -y && sudo restic self-update'
 mkdir /home/abraxas/start5/restic
 
-figet -f cybersmall getting rclone.conf
+figlet -f cybersmall getting rclone.conf
 /home/abraxas/start5/bashfuler.sh 'apt install -y rclone && rclone selfupdate && cd /home/abraxas/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
 [[ $(ls -la rclone.conf  | awk '{ print $5 }') -gr 10000 ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
 #rclone copy df:.ssh /home/abraxas/.ssh -P --password-command="echo $RCLONE_PASS"
@@ -149,6 +149,22 @@ source python-apps.sh
 source ssh.sh
 
 exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   #echo "$EDITOR=/usr/bin/nano" >> /home/abraxas/.bashrc
