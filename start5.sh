@@ -3,13 +3,13 @@
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
 #######################################################
-echo "version 216"
+echo "version 218"
 sleep $myspeed
 #######################################################
 
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
-mkdir $HOME/tmp >/dev/null 2>/dev/null
+mkdir /home/abraxas/tmp >/dev/null 2>/dev/null
 
 ################################## FUNCTIONS ###########################################
 countdown() {
@@ -37,18 +37,18 @@ pueue-init() {
   x=0
   while [[ $x -eq 0 ]]; do
   echo "PUEUE INIT"
-  rm -f $HOME/tmp/pueuestatus.txt
+  rm -f /home/abraxas/tmp/pueuestatus.txt
   countdown 1
   export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-  /home/linuxbrew/.linuxbrew/bin/pueue status >> $HOME/tmp/pueuestatus.txt 2>> $HOME/tmp/pueuestatus.txt
+  /home/linuxbrew/.linuxbrew/bin/pueue status >> /home/abraxas/tmp/pueuestatus.txt 2>> /home/abraxas/tmp/pueuestatus.txt
   # /home/linuxbrew/.linuxbrew/bin/pueue status
-  [[ $(cat $HOME/tmp/pueuestatus.txt) = *"Failed to initialize client"* ]] &&  /home/linuxbrew/.linuxbrew/bin/pueued -d && sleep 2 &&  /home/linuxbrew/.linuxbrew/bin/pueue status
-  [[ $(cat $HOME/tmp/pueuestatus.txt) = *"Permission denied"* ]] && sudo chown -R abraxas: /run/user && sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueue &&  /home/linuxbrew/.linuxbrew/bin/pueued -d && sleep 2 &&  /home/linuxbrew/.linuxbrew/bin/pueue status
-  [[ $(cat $HOME/tmp/pueuestatus.txt) = *"Please stop the daemon beforehand or delete the file manually"* ]] && x=1
-  [[ $(cat $HOME/tmp/pueuestatus.txt | head -n5) = *"Group"* ]] && x=1 || sudo chown -R abraxas: /run/user && sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueue && sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueued && /home/linuxbrew/.linuxbrew/bin/pueued -d && /home/linuxbrew/.linuxbrew/bin/pueued -d
+  [[ $(cat /home/abraxas/tmp/pueuestatus.txt) = *"Failed to initialize client"* ]] &&  /home/linuxbrew/.linuxbrew/bin/pueued -d && sleep 2 &&  /home/linuxbrew/.linuxbrew/bin/pueue status
+  [[ $(cat /home/abraxas/tmp/pueuestatus.txt) = *"Permission denied"* ]] && sudo chown -R abraxas: /run/user && sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueue &&  /home/linuxbrew/.linuxbrew/bin/pueued -d && sleep 2 &&  /home/linuxbrew/.linuxbrew/bin/pueue status
+  [[ $(cat /home/abraxas/tmp/pueuestatus.txt) = *"Please stop the daemon beforehand or delete the file manually"* ]] && x=1
+  [[ $(cat /home/abraxas/tmp/pueuestatus.txt | head -n5) = *"Group"* ]] && x=1 || sudo chown -R abraxas: /run/user && sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueue && sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueued && /home/linuxbrew/.linuxbrew/bin/pueued -d && /home/linuxbrew/.linuxbrew/bin/pueued -d
   sleep 1
   done
-  rm -f $HOME/tmp/pueuestatus.txt
+  rm -f /home/abraxas/tmp/pueuestatus.txt
 }
 
 trenner() {
@@ -57,9 +57,9 @@ trenner() {
 
 ################################## SCRIPT ###########################################
 clear
-cd $HOME
+cd /home/abraxas
 ts=$(date +"%s")
-export PATH=$PATH:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/syno/sbin:/usr/syno/bin:/usr/local/sbin:/usr/local/bin:/usr/path:/volume2/docker/utils/path:$HOME/.local/bin:$HOME/bin:/home/markus/.cargo/bin:/home/abraxas/.cargo/bin:/home/abraxas/.local/bin/:/home/abraxas/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:/volume1/homes/abraxas678/bin:/usr/local/bin:$PATH
+export PATH=$PATH:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/syno/sbin:/usr/syno/bin:/usr/local/sbin:/usr/local/bin:/usr/path:/volume2/docker/utils/path:/home/abraxas/.local/bin:/home/abraxas/bin:/home/markus/.cargo/bin:/home/abraxas/.cargo/bin:/home/abraxas/.local/bin/:/home/abraxas/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:/volume1/homes/abraxas678/bin:/usr/local/bin:$PATH
 echo "#####################################################################"
 echo "                      CHECKING USER DETAILS"
 echo "#####################################################################"
@@ -77,9 +77,12 @@ sudo chown abraxas: /home -R
 sudo apt install xclip -y
 echo 
 echo execute on current computer
-echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P; 
-echo rclone copy $HOME/.config/rclone/rclone.conf razer:webshare2 -P | xclip
+echo rclone copy /home/abraxas/.config/rclone/rclone.conf razer:webshare2 -P; 
+echo rclone copy /home/abraxas/.config/rclone/rclone.conf razer:webshare2 -P | xclip
 echo; read -p BUTTON me
+########################################################################################
+sudo apt-get update -y
+sudo apt install figlet p7zip-full -y
 sudo apt install -y curl
 curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
 echo; 
@@ -89,10 +92,11 @@ echo "#####################################################################"
 echo; sleep 2
 echo; echo "CLONE start5 REPOSITORY"; sleep $myspeed
 ##### BASH START
-rm -rf $HOME/start5
+cd /home/abraxas
+rm -rf /home/abraxas/start5
 sudo apt install -y git
 git clone https://github.com/abraxas678/start5.git
-cd $HOME/start5
+cd /home/abraxas/start5
 chmod +x *.sh
 ./bashful.sh
 
@@ -101,42 +105,40 @@ chmod +x *.sh
 #git config --global user.email abraxas678@gmail.com
 #sleep $myspeed
 #sudo ls >/dev/null
-#cd $HOME
+#cd /home/abraxas
 #git clone https://github.com/abraxas678/start5.git | tail -f -n5; echo
-#source $HOME/start5/color.dat
-#source $HOME/start5/path.dat
+#source /home/abraxas/start5/color.dat
+#source /home/abraxas/start5/path.dat
 ##### BASH END
-sudo apt-get update -y
-sudo apt install figlet -y
 echo "#####################################################################"
 figlet -f big checking hardware
 #echo "                      CHECKING HARDWARE"
 echo "#####################################################################"
 ###   df /home grösser 50GB?
-chmod +x $HOME/start5/*.sh
-[[ $(df -h /home  |awk '{ print $2 }' |tail -n1 | sed 's/G//' | sed 's/\./,/') -lt 50 ]] && /bin/bash $HOME/start5/new-disk.sh
+chmod +x /home/abraxas/start5/*.sh
+[[ $(df -h /home  |awk '{ print $2 }' |tail -n1 | sed 's/G//' | sed 's/\./,/') -lt 50 ]] && /bin/bash /home/abraxas/start5/new-disk.sh
 countdown 1
 echo "#####################################################################"
 figlet -f big system update and upgrade
 #echo "                   SYSTEM UPDATE AND UPGRADE"
 echo "#####################################################################"
 echo; echo "sudo apt-get update && sudo apt-get upgrade -y"; 
-$HOME/start5/bashfuler.sh 'sudo apt-get update && sudo apt-get upgrade -y'
+/home/abraxas/start5/bashfuler.sh 'sudo apt-get update && sudo apt-get upgrade -y'
 countdown 1
 
-$HOME/start5/bashfuler.sh 'sudo apt install restic -y'
-mkdir $HOME/start5/restic
-cd $HOME/start5/restic
-$HOME/start5/bashfuler.sh 'restic restore latest --files-from restic_include.txt --target /home/restic'
+/home/abraxas/start5/bashfuler.sh 'sudo apt install restic -y && sudo restic self-update'
+mkdir /home/abraxas/start5/restic
+cd /home/abraxas/start5/restic
+/home/abraxas/start5/bashfuler.sh 'restic restore latest --exclude "docker" --tag HOME --path "/home/abraxas" --host "instance-21" --target /home/restic'
 
 figet -f cybersmall getting rclone.conf
-$HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd $HOME/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
+/home/abraxas/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd /home/abraxas/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
 [[ $(ls -la rclone.conf  | awk '{ print $5 }') -gr 10000 ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
-#rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"
-#rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PASS"
+#rclone copy df:.ssh /home/abraxas/.ssh -P --password-command="echo $RCLONE_PASS"
+#rclone copy df:.config /home/abraxas/.config -P --password-command="echo $RCLONE_PASS"
 
 
-cd $HOME/start5
+cd /home/abraxas/start5
 chmod +x *.sh
 source tailscale.sh
 source brew-main.sh
@@ -148,16 +150,16 @@ source ssh.sh
 exit
 
 
-  #echo "$EDITOR=/usr/bin/nano" >> $HOME/.bashrc
-  source $HOME/.bashrc
+  #echo "$EDITOR=/usr/bin/nano" >> /home/abraxas/.bashrc
+  source /home/abraxas/.bashrc
   /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title tmux tmuxiator --print "$(sudo apt-get install -y tmux tmuxinator)" 
   countdown 1
-  ############  >>>>>>>>>>>>>>>>>>>>>>>   tmux new-session -d -s "start5" $HOME/main_script.sh
+  ############  >>>>>>>>>>>>>>>>>>>>>>>   tmux new-session -d -s "start5" /home/abraxas/main_script.sh
   /home/linuxbrew/.linuxbrew/bin/rich -u --panel rounded --style green --panel-style blue --print "[2] INSTALL ZSH -- Oh-my-Zsh -- Antigen FRAMEWORK"; sleep $myspeed
   #############################################  [2] INSTALL ZSH -- Oh-my-Zsh -- Antigen FRAMEWORK
   /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style green --panel-style blue --title "zsh php nodejs npm plocate" --print "$(pueue add -g system-setup --  sudo apt install -y zsh php nodejs npm firefox-esr plocate)"
   pueue add -g system-setup -- 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
-  pueue add -g system-setup -- 'curl -L git.io/antigen > $HOME/antigen.zsh'
+  pueue add -g system-setup -- 'curl -L git.io/antigen > /home/abraxas/antigen.zsh'
 countdown 1
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title unzip jq --print "$(sudo apt-get install unzip jq -y)"
 
@@ -197,25 +199,25 @@ trenner
 /home/linuxbrew/.linuxbrew/bin/rich -u --print "tailscale get file"
 echo; sudo tailscale file get ~/.config/rclone/
 countdown 1
-rclone copy df: $HOME --max-depth 1 --include=".zsh.env" -P --update --password-command="cat /home/abraxas/rcpw"
+rclone copy df: /home/abraxas --max-depth 1 --include=".zsh.env" -P --update --password-command="cat /home/abraxas/rcpw"
 source ~/.zsh.env
 #/home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --print "INSTALL AGE"
 /home/linuxbrew/.linuxbrew/bin/rich -u --print "myfilter.txt copy"
-rclone copy gd:dotfiles/myfilter.txt $HOME -P --max-depth 1 --update --password-command="cat /home/abraxas/rcpw"
-rclone copy gd:dotfiles/bin/ $HOME/bin -P --include="install-age.sh" --update --password-command="cat /home/abraxas/rcpw"
+rclone copy gd:dotfiles/myfilter.txt /home/abraxas -P --max-depth 1 --update --password-command="cat /home/abraxas/rcpw"
+rclone copy gd:dotfiles/bin/ /home/abraxas/bin -P --include="install-age.sh" --update --password-command="cat /home/abraxas/rcpw"
 /home/linuxbrew/.linuxbrew/bin/rich -u --print "bin copy"
-rclone copy df:bin/ $HOME/bin -P --update --password-command="cat /home/abraxas/rcpw" --filter-from="$HOME/myfilter.txt"
-sudo chmod +x $HOME/bin/*
+rclone copy df:bin/ /home/abraxas/bin -P --update --password-command="cat /home/abraxas/rcpw" --filter-from="/home/abraxas/myfilter.txt"
+sudo chmod +x /home/abraxas/bin/*
 /home/linuxbrew/.linuxbrew/bin/rich -u --print "INSTALL AGE"
-/bin/bash $HOME/bin/install-age.sh
+/bin/bash /home/abraxas/bin/install-age.sh
 /home/linuxbrew/.linuxbrew/bin/rich -u --print ".config copy"
-rclone copy df:.config ~/.config -P --update --password-command="cat /home/abraxas/rcpw" --filter-from="$HOME/myfilter.txt"
+rclone copy df:.config ~/.config -P --update --password-command="cat /home/abraxas/rcpw" --filter-from="/home/abraxas/myfilter.txt"
 /home/linuxbrew/.linuxbrew/bin/rich -u --print "dotfiles --max-depth 1 copy" 
-rclone copy df: $HOME -P --max-depth 1 --update --password-command="cat /home/abraxas/rcpw"
+rclone copy df: /home/abraxas -P --max-depth 1 --update --password-command="cat /home/abraxas/rcpw"
 /home/linuxbrew/.linuxbrew/bin/rich -u --print ".ssh copy"
 rclone copy df:.ssh ~/.ssh -P --update --password-command="cat /home/abraxas/rcpw"
 rm -f ~/rcpw
-source $HOME/.zsh.env
+source /home/abraxas/.zsh.env
 ### >>> IF 1 O
 if [[ $(which rclone) = *"/usr/bin/rclone"* ]]
 then
@@ -293,7 +295,7 @@ if [[ $RCLONE_INSTALL = "0" ]]
   countdown 1
   ################################################### [4] SETUP RCLONE
   echo
-  cd $HOME/start5
+  cd /home/abraxas/start5
   echo PWD: $PWD
   echo; sleep $myspeed
   #sudo apt install rclone -y
@@ -377,13 +379,13 @@ then
   echo GPG_KEY_RKO $GPG_KEY_RKO GPG_KEY_ASC $GPG_KEY_ASC
 if [[ $GPG_KEY_RKO = "1" || $GPG_KEY_ASC = "1" ]]
 then
-  sleep $myspeed; echo; echo 'rclone copy gd:sec $HOME/tmpgpginstall  --include "rko-*" --include="key.asc" --max-depth 1 --fast-list --skip-links'; echo; sleep $myspeed
-  rclone copy gd:sec $HOME/tmpgpginstall  --include "rko-*" --include="key.asc" --max-depth 1 --fast-list --skip-links; sleep $myspeed
-  sudo chown abraxas: $HOME/tmpgpginstall -R
-  sudo chmod 777 $HOME/tmpgpginstall -R
-  cd $HOME/tmpgpginstall
+  sleep $myspeed; echo; echo 'rclone copy gd:sec /home/abraxas/tmpgpginstall  --include "rko-*" --include="key.asc" --max-depth 1 --fast-list --skip-links'; echo; sleep $myspeed
+  rclone copy gd:sec /home/abraxas/tmpgpginstall  --include "rko-*" --include="key.asc" --max-depth 1 --fast-list --skip-links; sleep $myspeed
+  sudo chown abraxas: /home/abraxas/tmpgpginstall -R
+  sudo chmod 777 /home/abraxas/tmpgpginstall -R
+  cd /home/abraxas/tmpgpginstall
   echo; echo "files downloaded:"; sleep $myspeed
-  ls $HOME/tmpgpginstall
+  ls /home/abraxas/tmpgpginstall
   echo
   printf "${NC}"; printf "${BLUE2}"
   echo; echo "IMPORTING GPG FILES"; echo; sleep $myspeed
@@ -391,8 +393,8 @@ then
   sudo gpg --import *
   printf "${YELLOW}"; echo BUTTON10; 
   read -t 10 me 
-  rm -rf $HOME/tmpgpginstall
-  cd $HOME  
+  rm -rf /home/abraxas/tmpgpginstall
+  cd /home/abraxas  
 else
   printf "${NC}"; printf "${RED}"
   echo "NEITHER key.asc, NOR TWO rko-p*.key FILES FOUND. PLEASE PROVIDE ON GD: AND RESTART SCRIPT."
@@ -403,7 +405,7 @@ fi
 
 if [[ $RCLONE_COMPLETE != "1" ]]
 then
-      cd $HOME/start5
+      cd /home/abraxas/start5
       printf "${YELLOW}"
       echo "starting decryption"; sleep $myspeed
       printf "${NC}"; printf "${BLUE3}"
@@ -423,9 +425,9 @@ fi
 trenner "RCLONE DONE"
 countdown 1
 
-rclone copy gd:dotfiles/.bashrc $HOME -P
-rclone copy gd:dotfiles/.zshrc $HOME -P
-rclone copy gd:dotfiles/.p10k.zsh $HOME -P
+rclone copy gd:dotfiles/.bashrc /home/abraxas -P
+rclone copy gd:dotfiles/.zshrc /home/abraxas -P
+rclone copy gd:dotfiles/.p10k.zsh /home/abraxas -P
 
 trenner SOFTWARE INSTALL
 countdown 1
@@ -460,8 +462,8 @@ else
   #gpg --decrypt id_rsa.asc > id_rsa
   #rm id*.asc
 fi
-  sudo mkdir $HOME/.ssh >/dev/null 2>/dev/null
-  mv id_rsa $HOME/.ssh
+  sudo mkdir /home/abraxas/.ssh >/dev/null 2>/dev/null
+  mv id_rsa /home/abraxas/.ssh
   trenner "SETUP SSH FOLDER RIGHTS"
   echo; sleep $myspeed
 
@@ -486,7 +488,7 @@ echo
 #if [[ $myrestic = "y" ]]
 #then
 #printf "${NC}"; printf "${BLUE3}"
-#cd $HOME
+#cd /home/abraxas
 #restic -r rclone:gd:restic snapshots > mysnapshots
 #cat mysnapshots
 #echo
@@ -526,7 +528,7 @@ echo
   ############### !!!!!!!!!!!!!! ###############################################
 #  echo
 #  printf "${NC}"; printf "${NC}"; printf "${BLUE2}"; 
-#  echo; printf "RCLONE TO $HOME"; printf "${RED} - THIS WILL OVERRIDE EXISTING FILES"; echo; sleep $myspeed
+#  echo; printf "RCLONE TO /home/abraxas"; printf "${RED} - THIS WILL OVERRIDE EXISTING FILES"; echo; sleep $myspeed
 #  echo; echo "restic copies these files:"; echo
 #  echo "rclone lsl /tmp-restic-restore --max-depth 2"
 #  printf "${NC}"; printf "${BLUE4}"
@@ -541,7 +543,7 @@ echo
 #  myresticuserfolder=$(ls -d /tmp-restic-restore/*/*/bin | sed 's/\/bin.*//' | sed 's/.*tmprestigrestore\///')
 #  printf "${RED}"; echo myresticuserfolder $myresticuserfolder; printf "${NC}"; printf "${BLUE3}"; sleep 2
 #  printf "${NC}"; printf "${BLUE2}"; 
-#  echo; echo "rclone copy$myresticuserfolder $HOME/ -Pv"
+#  echo; echo "rclone copy$myresticuserfolder /home/abraxas/ -Pv"
 #  printf "${NC}"; printf "${BLUE4}"; echo "ENTER to START the transfer"
 #  echo; read me
 #  printf "${NC}"; printf "${BLUE3}"
@@ -561,15 +563,15 @@ echo
 #  ################################################## COPY-MODE ###############################
 #  printf "${NC}"; printf "${LILA}"
 #  echo "[1] conservative: skip all files already existing"
-#  printf "${BLUE4} rclone copy $myresticuserfolder $HOME/ -Pv --update --ignore-existing --skip-links --fast-list
+#  printf "${BLUE4} rclone copy $myresticuserfolder /home/abraxas/ -Pv --update --ignore-existing --skip-links --fast-list
 #  "; echo
 #  printf "${NC}"; printf "${GREEN}"
 #  echo; echo "[2] moderate: only overwrite if newer:"
-#   printf "${BLUE4} rclone copy $myresticuserfolder $HOME/ -Pv --update --skip-links --fast-list
+#   printf "${BLUE4} rclone copy $myresticuserfolder /home/abraxas/ -Pv --update --skip-links --fast-list
 #  "; echo
 #  printf "${NC}"; printf "${LILA}"
 #  echo; echo "[3] agressive: overwrite everything, dont delete"
-#   printf "${BLUE4} rclone ${RED} SYNC ${BLUE4} $myresticuserfolder $HOME/ -Pv --skip-links --fast-list
+#   printf "${BLUE4} rclone ${RED} SYNC ${BLUE4} $myresticuserfolder /home/abraxas/ -Pv --skip-links --fast-list
 #  "; echo
 #  echo;  printf "${BLUE2} >>>> "; read -n 1 mymode; echo; echo
 #  printf "${NC}"; printf "${BLUE3}"
@@ -580,19 +582,19 @@ echo
 #    if [[ $mymode = "1" ]]
 #    then
 #      x=1
-#      echo "rclone copy $myresticuserfolder $HOME/ -Pv --update --ignore-existing --skip-links --fast-list"
-#      rclone copy $myresticuserfolder $HOME/ -Pv --update --ignore-existing --skip-links --fast-list
+#      echo "rclone copy $myresticuserfolder /home/abraxas/ -Pv --update --ignore-existing --skip-links --fast-list"
+#      rclone copy $myresticuserfolder /home/abraxas/ -Pv --update --ignore-existing --skip-links --fast-list
 #    elif [[ $mymode = "2" ]]
 #    then
 #      x=1
-#      echo "rclone copy $myresticuserfolder $HOME/ -Pv --update --skip-links --fast-list"
-#      rclone copy $myresticuserfolder $HOME/ -Pv --update --skip-links --fast-list
+#      echo "rclone copy $myresticuserfolder /home/abraxas/ -Pv --update --skip-links --fast-list"
+#      rclone copy $myresticuserfolder /home/abraxas/ -Pv --update --skip-links --fast-list
 #    elif [[ $mymode = "3" ]]
 #    then
 #      x=1
-#      echo "sudo rclone sync $myresticuserfolder/ $HOME/ -Pv --skip-links --fast-list"
-#     # rclone sync $HOME/ -Pv --skip-links --fast-list
-#      sudo rclone sync $myresticuserfolder/ $HOME/ -Pv --skip-links --fast-list
+#      echo "sudo rclone sync $myresticuserfolder/ /home/abraxas/ -Pv --skip-links --fast-list"
+#     # rclone sync /home/abraxas/ -Pv --skip-links --fast-list
+#      sudo rclone sync $myresticuserfolder/ /home/abraxas/ -Pv --skip-links --fast-list
 #    else
 #      x=0
 #      printf "${RED}"
@@ -600,15 +602,15 @@ echo
 #    fi
 #  done
 
-#sudo chown $USER: $HOME -R
+#sudo chown $USER: /home/abraxas -R
 #sudo chown $USER: $myresticuserfolder -R 
 
     # skip all, already existing:
-  #rclone copy$myresticuserfolder $HOME/ -Pv --update --ignore-existing --skip-links --fast-list
+  #rclone copy$myresticuserfolder /home/abraxas/ -Pv --update --ignore-existing --skip-links --fast-list
   # only overwrite if newer:
-  #rclone copy$myresticuserfolder $HOME/ -Pv --update --skip-links --fast-list
+  #rclone copy$myresticuserfolder /home/abraxas/ -Pv --update --skip-links --fast-list
 
-  #overwrite everything, dont delete: rclone copy$myresticuserfolder $HOME/ -Pv --skip-links --fast-list
+  #overwrite everything, dont delete: rclone copy$myresticuserfolder /home/abraxas/ -Pv --skip-links --fast-list
   
   ############### !!!!!!!!!!!!!! ##################################
 #  echo
@@ -690,17 +692,17 @@ pueue add -g system-setup -- sudo apt-get install docker.io docker-compose -y
 #################################################### docker compose
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title "clean up" --print "AUTOREMOVE"; sleep $myspeed
 ################################################################# [18] CLEAN UP
-rm -f $HOME/color.dat
+rm -f /home/abraxas/color.dat
 trenner AUTOREMOVE
 sudo apt autoremove -y
 
-#p $HOME/start5/dotfiles/.zshrc $HOME/
-#cp $HOME/start5/dotfiles/.p10k.zsh $HOME/
-#cp $HOME/start5/dotfiles/.taskrc $HOME/
-#cp $HOME/start5/dotfiles/pcc $HOME/bin
-#mv $HOME/start5/dotfiles/bin/* $HOME/bin/
+#p /home/abraxas/start5/dotfiles/.zshrc /home/abraxas/
+#cp /home/abraxas/start5/dotfiles/.p10k.zsh /home/abraxas/
+#cp /home/abraxas/start5/dotfiles/.taskrc /home/abraxas/
+#cp /home/abraxas/start5/dotfiles/pcc /home/abraxas/bin
+#mv /home/abraxas/start5/dotfiles/bin/* /home/abraxas/bin/
 echo
-rm -rf $HOME/start
+rm -rf /home/abraxas/start
 rm -rf $HME/start5
 echo
 trenner "INSTALL TASKWARRIOR"
@@ -709,7 +711,7 @@ sudo apt-get install cifs-utils -y | tail -f -n5
 #echo; echo GOODSYNC; echo
 rm -rf .antigen
 printf "${NC}"
-cd $HOME
+cd /home/abraxas
 #wget https://www.goodsync.com/download/goodsync-linux-x86_64-release.run
 #chmod +x goodsync-linux-x86_64-release.run
 #sudo ./goodsync-linux-x86_64-release.run
@@ -729,10 +731,10 @@ sudo systemctl start pcopy
 
 /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- pip install taskwarrior-inthe.am
 /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- sudo apt-get install cifs-utils -y
-rm -rf $HOME/.antigen
+rm -rf /home/abraxas/.antigen
 #echo; echo GOODSYNC; echo
 printf "${NC}"
-cd $HOME
+cd /home/abraxas
 #echo; echo "INSTALL GOODSYNC? (y/n)"
 #mychoice="n"
 #read -n 1 -t 5 mychoice
@@ -746,25 +748,25 @@ cd $HOME
 #fi
 #echo "copy files from gd:dotfiles"
 #read -t 10 me
-#rclone copy gd:dotfiles $HOME --max-depth 1 --filter-from="$HOME/myfilter.txt" -P
+#rclone copy gd:dotfiles /home/abraxas --max-depth 1 --filter-from="/home/abraxas/myfilter.txt" -P
 #read -t 10 me
-#rclone copy gd:dotfiles/bin $HOME/bin --filter-from="$HOME/myfilter.txt" -P
+#rclone copy gd:dotfiles/bin /home/abraxas/bin --filter-from="/home/abraxas/myfilter.txt" -P
 #read -t 10 me
-#rclone copy gd:dotfiles/docker $HOME/docker --filter-from="$HOME/myfilter.txt" -P
+#rclone copy gd:dotfiles/docker /home/abraxas/docker --filter-from="/home/abraxas/myfilter.txt" -P
 #read -t 10 me
-#rclone copy gd:dotfiles $HOME --filter-from="$HOME/myfilter.txt" -P
+#rclone copy gd:dotfiles /home/abraxas --filter-from="/home/abraxas/myfilter.txt" -P
 #echo "RCLONE BISYNC DOTFILES (-1)"
-#touch $HOME/RCLONE_TEST
+#touch /home/abraxas/RCLONE_TEST
 #rclone copy RCLONE_TEST gd:dotfiles -P
-#rclone copy gd:dotfiles/bin $HOME/bin -P
-#rclone copy gd:dotfiles/bisync-filter.txt $HOME -P
+#rclone copy gd:dotfiles/bin /home/abraxas/bin -P
+#rclone copy gd:dotfiles/bisync-filter.txt /home/abraxas -P
 #rclone bisync /home/abraxas/ gd:dotfiles --filters-file /home/abraxas/bisync-filter.txt -Pvvv --check-access --resync --skip-links
-/home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title "rclone copy df:.config $HOME/.config --update -Pv" --print "$(rclone copy df:.config $HOME/.config --update -Pv)"
+/home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title "rclone copy df:.config /home/abraxas/.config --update -Pv" --print "$(rclone copy df:.config /home/abraxas/.config --update -Pv)"
 sudo chown $user: -R /home
-mkdir $HOME/tmp >/dev/null 2>/dev/null
-mkdir $HOME/tmp/restic >/dev/null 2>/dev/null
+mkdir /home/abraxas/tmp >/dev/null 2>/dev/null
+mkdir /home/abraxas/tmp/restic >/dev/null 2>/dev/null
 trenner "RESTIC MOUNT" --style red
-restic mount $HOME/tmp/restic &
+restic mount /home/abraxas/tmp/restic &
 echo DONE 
 echo EXEC ZSH
 exec zsh
