@@ -128,14 +128,15 @@ countdown 1
 
 /home/abraxas/start5/bashfuler.sh 'sudo apt install restic -y && sudo restic self-update'
 mkdir /home/abraxas/start5/restic
-cd /home/abraxas/start5/restic
-/home/abraxas/start5/bashfuler.sh 'restic restore latest --exclude "docker" --tag HOME --path "/home/abraxas" --host "instance-21" --target /home/restic'
 
 figet -f cybersmall getting rclone.conf
 /home/abraxas/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd /home/abraxas/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
 [[ $(ls -la rclone.conf  | awk '{ print $5 }') -gr 10000 ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
 #rclone copy df:.ssh /home/abraxas/.ssh -P --password-command="echo $RCLONE_PASS"
 #rclone copy df:.config /home/abraxas/.config -P --password-command="echo $RCLONE_PASS"
+
+cd /home/abraxas/start5/restic
+/home/abraxas/start5/bashfuler.sh 'restic restore latest --exclude "docker" --tag HOME --path "/home/abraxas" --host "instance-21" --target /home/restic -r rclone:snas:backup/restic2'
 
 
 cd /home/abraxas/start5
