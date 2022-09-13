@@ -3,7 +3,7 @@
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
 #######################################################
-echo "version 219"
+echo "version 220"
 sleep $myspeed
 #######################################################
 
@@ -130,7 +130,7 @@ countdown 1
 mkdir /home/abraxas/start5/restic
 
 figet -f cybersmall getting rclone.conf
-/home/abraxas/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd /home/abraxas/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
+/home/abraxas/start5/bashfuler.sh 'apt install -y rclone && rclone selfupdate && cd /home/abraxas/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
 [[ $(ls -la rclone.conf  | awk '{ print $5 }') -gr 10000 ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
 #rclone copy df:.ssh /home/abraxas/.ssh -P --password-command="echo $RCLONE_PASS"
 #rclone copy df:.config /home/abraxas/.config -P --password-command="echo $RCLONE_PASS"
