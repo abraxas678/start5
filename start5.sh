@@ -135,8 +135,8 @@ figlet -f cybersmall getting rclone.conf
 #rclone copy df:.ssh /home/abraxas/.ssh -P --password-command="echo $RCLONE_PASS"
 #rclone copy df:.config /home/abraxas/.config -P --password-command="echo $RCLONE_PASS"
 
-cd /home/abraxas/start5/restic
-/home/abraxas/start5/bashfuler.sh 'restic restore latest --exclude "docker" --tag HOME --path "/home/abraxas" --host "instance-21" --target /home/restic -r rclone:snas:backup/restic2'
+#cd /home/abraxas/start5/restic
+#/home/abraxas/start5/bashfuler.sh 'restic restore latest --exclude "docker" --tag HOME --path "/home/abraxas" --host "instance-21" --target /home/restic -r rclone:snas:backup/restic2'
 
 
 cd /home/abraxas/start5
