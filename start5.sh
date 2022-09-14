@@ -3,7 +3,7 @@
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
 #######################################################
-echo "version 221"
+echo "version 222"
 sleep $myspeed
 #######################################################
 
@@ -141,9 +141,9 @@ figlet -f cybersmall getting rclone.conf
 
 cd /home/abraxas/start5
 chmod +x *.sh
-source tailscale.sh
-source brew-main.sh
-source brew-apps.sh
+source /home/abraxas/start5/tailscale.sh
+source /home/abraxas/start5/brew-main.sh
+source /home/abraxas/start5/brew-apps.sh
 source apt-apps.sh
 source python-apps.sh
 source ssh.sh
