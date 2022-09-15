@@ -130,7 +130,6 @@ countdown 1
 mkdir /home/abraxas/start5/restic
 
 figlet -f cybersmall getting rclone.conf
-<<<<<<< HEAD
 $HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd $HOME/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
 [[ $(ls -la rclone.conf  | awk '{ print $5 }') > '10000' ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
 #rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"
@@ -142,6 +141,8 @@ $HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd 
 
 cd /home/abraxas/start5
 chmod +x *.sh
+echo tailscale.sh
+read me
 source /home/abraxas/start5/tailscale.sh
 source /home/abraxas/start5/brew-main.sh
 source /home/abraxas/start5/brew-apps.sh
