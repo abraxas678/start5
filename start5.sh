@@ -122,6 +122,10 @@ echo; figlet SSH COPY; echo
 echo rclone copy df:.ssh $HOME/.ssh -P
 rclone copy df:.ssh $HOME/.ssh -P
 chmod 500 $HOME/.ssh -R
+rclone copy df:.config $HOME/.config -P
+rclone copy df:.zsh.env  $HOME -P
+source $HOME/.zsh.env
+rclone copy df:bin $HOME/bin -P
 
 echo "#####################################################################"
 figlet -f big checking hardware
@@ -137,6 +141,7 @@ figlet -f big system update and upgrade
 #echo "                   SYSTEM UPDATE AND UPGRADE"
 echo "#####################################################################"
 echo; echo "sudo apt-get update && sudo apt-get upgrade -y"; 
+countdown 4
 /home/abraxas/start5/bashfuler.sh 'sudo apt-get update && sudo apt-get upgrade -y'
 countdown 1
 
