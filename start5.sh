@@ -74,17 +74,18 @@ echo "CURRENT USER: $USER"
 #countdown 1
 sudo mkdir /home/restic >/dev/null 2>/dev/null
 sudo chown abraxas: /home -R
-sudo apt install xclip -y
-echo 
-echo execute on current computer
-echo rclone copy /home/abraxas/.config/rclone/rclone.conf razer:webshare2 -P; 
-echo rclone copy /home/abraxas/.config/rclone/rclone.conf razer:webshare2 -P | xclip
-echo; read -p BUTTON me
+sudo apt install xclip -y 2>/dev/null
+#echo 
+#echo execute on current computer
+#echo rclone copy /home/abraxas/.config/rclone/rclone.conf razer:webshare2 -P; 
+#echo rclone copy /home/abraxas/.config/rclone/rclone.conf razer:webshare2 -P | xclip
+#echo; read -p BUTTON me
 ########################################################################################
-sudo apt-get update -y
-sudo apt install figlet p7zip-full -y
-sudo apt install -y curl
-curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
+sudo apt-get update -y 2>/dev/null
+sudo apt install figlet p7zip-full curl 2>/dev/null
+
+# webdav razer
+#curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
 echo; 
 echo "#####################################################################"
 figlet                     CLONE start5 REPOSITORY   
