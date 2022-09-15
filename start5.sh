@@ -98,6 +98,9 @@ sudo apt install -y git >/dev/null 2>/dev/null
 git config --global user.name abraxas678
 git config --global user.email abraxas678@gmail.com
 git clone https://github.com/abraxas678/start5.git 
+cd $HOME/start5
+git remote add origin git@github.com:abraxas678/start5.git
+git remote set-url origin git@github.com:abraxas678/start5.git
 echo; figlet DONE; echo
 cd /home/abraxas/start5
 chmod +x *.sh
