@@ -1,0 +1,9 @@
+2022/09/15 18:47:43 [1;39mTask full output: sudo apt install restic -y[0m
+
+[91mWARNING: apt does not have a stable CLI interface. Use with caution in scripts.[0m
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+restic is already the newest version (0.9.6+ds-2).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.

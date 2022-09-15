@@ -1,0 +1,10 @@
+2022/09/15 18:47:45 [1;39mTask full output: curl https://rclone.org/install.sh | sudo bash[0m
+[91m  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current[0m
+[91m                                 Dload  Upload   Total   Spent    Left  Speed[0m
+
+[91m  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0[0m
+[91m  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0[0m
+[91m100  4631  100  4631    0     0  13008      0 --:--:-- --:--:-- --:--:-- 12971[0m
+
+The latest version of rclone rclone v1.59.2 is already installed.
+

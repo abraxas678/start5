@@ -103,11 +103,26 @@ git remote add origin git@github.com:abraxas678/start5.git
 git remote set-url origin git@github.com:abraxas678/start5.git
 echo; figlet DONE; echo
 cd /home/abraxas/start5
-chmod +x *.sh
-./bashful.sh
-
 source /home/abraxas/start5/color.dat
 source /home/abraxas/start5/path.dat
+chmod +x *.sh
+./bashful.sh
+source /home/abraxas/start5/tailscale.sh
+
+echo ">>> EXECUTE ON ALREADY SETUP PC:" 
+echo sudo tailscale file cp ~/.config/rclone/rclone.conf $(sudo tailscale status | grep $(sudo tailscale ip | head -n 1)  | awk '{ print $2 }'):
+echo
+read -p BUTTON me
+cd /home/abraxas/.config/rclone/
+echo; echo sudo tailscale file get .
+sudo tailscale file get .
+echo done
+cd $HOME/start5
+echo; figlet SSH COPY; echo
+echo rclone copy df:.ssh $HOME/.ssh -P
+rclone copy df:.ssh $HOME/.ssh -P
+chmod 500 $HOME/.ssh -R
+
 echo "#####################################################################"
 figlet -f big checking hardware
 #echo "                      CHECKING HARDWARE"
@@ -140,7 +155,6 @@ $HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd 
 
 cd /home/abraxas/start5
 chmod +x *.sh
-source /home/abraxas/start5/tailscale.sh
 source /home/abraxas/start5/brew-main.sh
 source /home/abraxas/start5/brew-apps.sh
 source /home/abraxas/start5/apt-apps.sh

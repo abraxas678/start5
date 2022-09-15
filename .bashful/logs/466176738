@@ -1,0 +1,8 @@
+2022/09/15 18:47:36 [1;39mTask full output: sudo apt-get update[0m
+Hit:1 http://azure.archive.ubuntu.com/ubuntu focal InRelease
+Hit:2 http://azure.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:3 http://azure.archive.ubuntu.com/ubuntu focal-backports InRelease
+Hit:4 http://azure.archive.ubuntu.com/ubuntu focal-security InRelease
+Get:5 https://pkgs.tailscale.com/stable/ubuntu focal InRelease
+Fetched 5542 B in 1s (6037 B/s)
+Reading package lists...
