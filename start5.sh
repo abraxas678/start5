@@ -87,29 +87,24 @@ sudo apt install -y curl
 curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
 echo; 
 echo "#####################################################################"
-echo "                     CLONE start5 REPOSITORY   "
+figlet                     CLONE start5 REPOSITORY   
 echo "#####################################################################"
-echo; sleep 2
-echo; echo "CLONE start5 REPOSITORY"; sleep $myspeed
+echo; sleep 1
+#echo; echo "CLONE start5 REPOSITORY"; sleep $myspeed
 ##### BASH START
 cd /home/abraxas
 rm -rf /home/abraxas/start5
-sudo apt install -y git
-git clone https://github.com/abraxas678/start5.git
+sudo apt install -y git >/dev/null 2>/dev/null
+git config --global user.name abraxas678
+git config --global user.email abraxas678@gmail.com
+git clone https://github.com/abraxas678/start5.git 
+echo; figlet DONE; echo
 cd /home/abraxas/start5
 chmod +x *.sh
 ./bashful.sh
 
-#sudo apt-get install git -y | tail -f -n5
-#git config --global user.name abraxas678
-#git config --global user.email abraxas678@gmail.com
-#sleep $myspeed
-#sudo ls >/dev/null
-#cd /home/abraxas
-#git clone https://github.com/abraxas678/start5.git | tail -f -n5; echo
-#source /home/abraxas/start5/color.dat
-#source /home/abraxas/start5/path.dat
-##### BASH END
+source /home/abraxas/start5/color.dat
+source /home/abraxas/start5/path.dat
 echo "#####################################################################"
 figlet -f big checking hardware
 #echo "                      CHECKING HARDWARE"
@@ -117,6 +112,7 @@ echo "#####################################################################"
 ###   df /home grösser 50GB?
 chmod +x /home/abraxas/start5/*.sh
 [[ $(df -h /home  |awk '{ print $2 }' |tail -n1 | sed 's/G//' | sed 's/\./,/') -lt 50 ]] && /bin/bash /home/abraxas/start5/new-disk.sh
+figlet DONE
 countdown 1
 echo "#####################################################################"
 figlet -f big system update and upgrade
@@ -141,14 +137,12 @@ $HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd 
 
 cd /home/abraxas/start5
 chmod +x *.sh
-echo tailscale.sh
-read me
 source /home/abraxas/start5/tailscale.sh
 source /home/abraxas/start5/brew-main.sh
 source /home/abraxas/start5/brew-apps.sh
-source apt-apps.sh
-source python-apps.sh
-source ssh.sh
+source /home/abraxas/start5/apt-apps.sh
+source /home/abraxas/start5/python-apps.sh
+source /home/abraxas/start5/ssh.sh
 
 exit
 
