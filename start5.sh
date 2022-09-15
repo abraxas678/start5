@@ -69,9 +69,9 @@ read -t 1 me
 [[ $USER != "abraxas" ]] && [[ ! $(id -u abraxas) ]] && sudo adduser abraxas && sudo passwd abraxas && sudo usermod -aG sudo abraxas && su abraxas
 [[ $USER != "abraxas" ]] && su abraxas
 echo "CURRENT USER: $USER"
-[[ $USER != "abraxas" ]] && echo BUTTON && read me || echo BUTTON2 && read -t 2 me
+[[ $USER != "abraxas" ]] && echo BUTTON && read me || read -t 1 me
 
-countdown 1
+#countdown 1
 sudo mkdir /home/restic >/dev/null 2>/dev/null
 sudo chown abraxas: /home -R
 sudo apt install xclip -y
@@ -129,9 +129,9 @@ mkdir $HOME/start5/restic
 cd $HOME/start5/restic
 $HOME/start5/bashfuler.sh 'restic restore latest --files-from restic_include.txt --target /home/restic'
 
-figet -f cybersmall getting rclone.conf
+figlet -f cybersmall getting rclone.conf
 $HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd $HOME/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
-[[ $(ls -la rclone.conf  | awk '{ print $5 }') -gr 10000 ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
+[[ $(ls -la rclone.conf  | awk '{ print $5 }') > '10000' ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
 #rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"
 #rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PASS"
 
@@ -146,6 +146,36 @@ source python-apps.sh
 source ssh.sh
 
 exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   #echo "$EDITOR=/usr/bin/nano" >> $HOME/.bashrc
