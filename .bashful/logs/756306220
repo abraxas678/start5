@@ -1,4 +1,0 @@
-2022/09/15 18:47:44 [1;39mTask full output: sudo restic self-update[0m
-writing restic to /usr/bin/restic
-find latest release of restic at GitHub
-restic is up to date
