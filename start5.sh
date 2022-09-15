@@ -3,7 +3,7 @@
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
 #######################################################
-echo "version 223"
+echo "version 224"
 sleep $myspeed
 #######################################################
 
@@ -71,7 +71,7 @@ read -t 1 me
 echo "CURRENT USER: $USER"
 [[ $USER != "abraxas" ]] && echo BUTTON && read me || read -t 1 me
 
-read -P "RCLONE PW" RCLONE_PW
+read -p "RCLONE PW" RCLONE_PW
 export RCLONE_PW="$RCLONE_PW"
 
 #countdown 1
