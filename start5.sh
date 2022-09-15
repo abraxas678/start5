@@ -71,6 +71,9 @@ read -t 1 me
 echo "CURRENT USER: $USER"
 [[ $USER != "abraxas" ]] && echo BUTTON && read me || read -t 1 me
 
+read -P "RCLONE PW" RCLONE_PW
+export RCLONE_PW="$RCLONE_PW"
+
 #countdown 1
 sudo mkdir /home/restic >/dev/null 2>/dev/null
 sudo chown abraxas: /home -R
@@ -120,13 +123,15 @@ sudo tailscale file get .
 echo done
 cd $HOME/start5
 echo; figlet SSH COPY; echo
+
 echo rclone copy df:.ssh $HOME/.ssh -P
-rclone copy df:.ssh $HOME/.ssh -P
+rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PW"
 chmod 500 $HOME/.ssh -R
-rclone copy df:.config $HOME/.config -P
-rclone copy df:.zsh.env  $HOME -P
+rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PW"
+rclone copy df:.zsh.env  $HOME -P --password-command="echo $RCLONE_PW"
+rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
+rclone copy df:bin $HOME/bin -P --password-command="echo $RCLONE_PW"
 source $HOME/.zsh.env
-rclone copy df:bin $HOME/bin -P
 
 echo "#####################################################################"
 figlet -f big checking hardware
