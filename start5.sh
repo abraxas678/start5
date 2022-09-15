@@ -5,6 +5,7 @@ myspeed="0.5"
 #######################################################
 echo "version 224"
 sleep $myspeed
+sleep 3
 #######################################################
 
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
