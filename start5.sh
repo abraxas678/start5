@@ -177,7 +177,7 @@ mkdir /home/abraxas/start5/restic
 
 figlet -f cybersmall getting rclone.conf
 $HOME/start5/bashfuler.sh "curl https://rclone.org/install.sh | $MY_SUDO bash && cd $HOME/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf"
-[[ $(ls -la rclone.conf  | awk '{ print $5 }') > '10000' ]] && echo "rclone.conf NOT valid" && sleep 3 && read -t 11 me
+#[[ $(ls -la rclone.conf  | awk '{ print $5 }') > '10000' ]] && echo "rclone.conf NOT valid" && sleep 3 && read -t 11 me
 #rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"
 #rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PASS"
 
