@@ -4,7 +4,7 @@
 myspeed="0.5" 
 #######################################################
 clear
-echo "version 227"
+echo "version 228"
 sleep $myspeed
 sleep 3
 #######################################################
@@ -76,7 +76,7 @@ echo "CURRENT USER: $USER"
 sudo ls >/dev/null 2>/dev/null
 read -p "RCLONE PW: >>> " RCLONE_PW
 export RCLONE_PW="$RCLONE_PW"
-
+clear
 #countdown 1
 $MY_SUDO mkdir /home/abraxas/.config
 $MY_SUDO mkdir /home/abraxas/.config/rclone
@@ -112,8 +112,10 @@ source /home/abraxas/start5/color.dat
 source /home/abraxas/start5/path.dat
 chmod +x *.sh
 figlet BASHFUL INSTALL
+sleep 1
 ./bashful.sh
 figlet TAILSCALE install
+sleep 1
 source /home/abraxas/start5/tailscale.sh
 
 figlet ">>> EXECUTE ON ALREADY SETUP PC:" 
