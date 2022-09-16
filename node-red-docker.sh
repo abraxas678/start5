@@ -1,4 +1,5 @@
 #!/bin/bash
+[[ $(docker version | wc -l) -gt 15 ]] && sudo apt install -y docker.io
 mkdir $HOME/docker
 mkdir $HOME/docker/node-red
 cd $HOME/docker/node-red
