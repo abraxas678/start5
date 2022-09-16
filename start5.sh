@@ -112,7 +112,7 @@ figlet clone
 /home/abraxas/bashfuler.sh git clone https://github.com/abraxas678/start5.git 
 cd $HOME/start5
 figlet git setup
-git remote add origin git@github.com:abraxas678/start5.git
+git remote add origin git@github.com:abraxas678/start5.git 2>/dev/null
 git remote set-url origin git@github.com:abraxas678/start5.git
 echo; figlet DONE; echo
 cd /home/abraxas/start5
