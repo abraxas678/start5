@@ -4,7 +4,7 @@
 myspeed="0.5" 
 #######################################################
 clear
-echo "version 229"
+echo "version 230"
 sleep $myspeed
 sleep 3
 #######################################################
@@ -78,13 +78,20 @@ read -p "RCLONE PW: >>> " RCLONE_PW
 export RCLONE_PW="$RCLONE_PW"
 clear
 #countdown 1
-$MY_SUDO mkdir /home/abraxas/.config
-$MY_SUDO mkdir /home/abraxas/.config/rclone
+$MY_SUDO mkdir /home/abraxas/.config >/dev/null 2>/dev/null
+$MY_SUDO mkdir /home/abraxas/.config/rclone >/dev/null 2>/dev/null
 $MY_SUDO mkdir /home/restic >/dev/null 2>/dev/null
 $MY_SUDO chown abraxas: /home -R
-$MY_SUDO apt-get update -y 2>/dev/null
-$MY_SUDO apt install xclip -y 2>/dev/null
-$MY_SUDO apt install rclone figlet p7zip-full curl 2>/dev/null
+cd /home/abraxas
+echo; echo BASHFUL INSTALL
+sleep 1
+bash <(curl -s https://raw.githubusercontent.com/abraxas678/start5/master/bashful.sh)
+cd /home/abraxas
+wget https://raw.githubusercontent.com/abraxas678/start5/master/bashfuler.sh
+chmod +x *.sh
+/home/abraxas/bashfuler.sh $MY_SUDO apt-get update -y 2>/dev/null
+/home/abraxas/bashfuler.sh $MY_SUDO apt install xclip -y 2>/dev/null
+/home/abraxas/bashfuler.sh $MY_SUDO apt install rclone figlet p7zip-full curl 2>/dev/null
 
 # webdav razer
 #curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
@@ -97,11 +104,11 @@ echo; sleep 1
 ##### BASH START
 cd /home/abraxas
 rm -rf /home/abraxas/start5
-$MY_SUDO apt install -y git >/dev/null 2>/dev/null
+/home/abraxas/bashfuler.sh $MY_SUDO apt install -y git >/dev/null 2>/dev/null
 git config --global user.name abraxas678
 git config --global user.email abraxas678@gmail.com
 figlet clone
-git clone https://github.com/abraxas678/start5.git 
+/home/abraxas/bashfuler.sh git clone https://github.com/abraxas678/start5.git 
 cd $HOME/start5
 figlet git setup
 git remote add origin git@github.com:abraxas678/start5.git
@@ -111,9 +118,6 @@ cd /home/abraxas/start5
 source /home/abraxas/start5/color.dat
 source /home/abraxas/start5/path.dat
 chmod +x *.sh
-figlet BASHFUL INSTALL
-sleep 1
-./bashful.sh
 figlet TAILSCALE install
 sleep 1
 source /home/abraxas/start5/tailscale.sh
