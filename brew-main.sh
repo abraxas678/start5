@@ -3,7 +3,7 @@ echo "                          INSTALL BREW"
 echo "#####################################################################"
 echo; sleep 2
 countdown 1
-/home/abraxas/bashfuler.sh /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 /home/abraxas/bashfuler.sh sudo apt-get install build-essential procps curl file git
 test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
