@@ -1,5 +1,4 @@
 #!/bin/bash
-export PATH=$PATH:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/syno/sbin:/usr/syno/bin:/usr/local/s>
 echo "#####################################################################"
 echo "                      CHECKING USER DETAILS"
 echo "#####################################################################"
