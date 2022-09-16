@@ -3,7 +3,7 @@
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
 #######################################################
-echo "version 224"
+echo "version 225"
 sleep $myspeed
 sleep 3
 #######################################################
