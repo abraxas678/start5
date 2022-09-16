@@ -2,6 +2,7 @@
 # $1 = # of seconds
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
+export DISPLAY=100.101.117.77:0.0
 #######################################################
 clear
 echo "version 233"
