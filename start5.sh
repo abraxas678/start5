@@ -4,7 +4,7 @@
 myspeed="0.5" 
 #######################################################
 clear
-echo "version 232"
+echo "version 233"
 sleep $myspeed
 sleep 3
 #######################################################
@@ -169,14 +169,14 @@ figlet -f big system update and upgrade
 echo "#####################################################################"
 echo; echo "$MY_SUDO apt-get update && $MY_SUDO apt-get upgrade -y"; 
 countdown 4
-/home/abraxas/start5/bashfuler.sh '$MY_SUDO apt-get update && $MY_SUDO apt-get upgrade -y'
+/home/abraxas/start5/bashfuler.sh "$MY_SUDO apt-get update && $MY_SUDO apt-get upgrade -y"
 countdown 1
 
-/home/abraxas/start5/bashfuler.sh '$MY_SUDO apt install restic -y && $MY_SUDO restic self-update'
+/home/abraxas/start5/bashfuler.sh "$MY_SUDO apt install restic -y && $MY_SUDO restic self-update"
 mkdir /home/abraxas/start5/restic
 
 figlet -f cybersmall getting rclone.conf
-$HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | $MY_SUDO bash && cd $HOME/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
+$HOME/start5/bashfuler.sh "curl https://rclone.org/install.sh | $MY_SUDO bash && cd $HOME/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf"
 [[ $(ls -la rclone.conf  | awk '{ print $5 }') > '10000' ]] && echo "rclone.conf NOT valid" && sleep 3 && read -t 11 me
 #rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"
 #rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PASS"
