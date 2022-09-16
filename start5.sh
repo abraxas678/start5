@@ -190,19 +190,19 @@ cd /home/abraxas/start5
 chmod +x *.sh
 figlet BREW main INSTALL
 source /home/abraxas/start5/brew-main.sh
-read -p "BUTTON" me
+read -p "BUTTON pueue" me
 source /home/abraxas/start5/brew-pueue.sh
-read -p "BUTTON" me
+read -p "BUTTON brew apps" me
 source /home/abraxas/start5/brew-apps.sh
-read -p "BUTTON" me
+read -p "BUTTON .config" me
 /home/linuxbrew/.linuxbrew/bin/pueue rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PW"
-read -p "BUTTON" me
+read -p "BUTTON bin copy" me
 /home/linuxbrew/.linuxbrew/bin/pueue rclone copy df:bin $HOME/bin -P --password-command="echo $RCLONE_PW"
-read -p "BUTTON" me
+read -p "BUTTON apt apps" me
 source /home/abraxas/start5/apt-apps.sh
-read -p "BUTTON" me
+read -p "BUTTON python apps" me
 source /home/abraxas/start5/python-apps.sh
-read -p "BUTTON" me
+read -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
 
 exit
