@@ -64,7 +64,7 @@ export PATH=$PATH:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/syno/sbin:/u
 echo "#####################################################################"
 echo "                      CHECKING USER DETAILS"
 echo "#####################################################################"
-echo; sleep 2
+echo; sleep 1
 echo "CURRENT USER: $USER" 
 read -t 1 me
 MY_SUDO="sudo"
@@ -73,21 +73,18 @@ MY_SUDO="sudo"
 echo "CURRENT USER: $USER"
 [[ $USER != "abraxas" ]] && echo BUTTON && read me || read -t 1 me
 
-read -p "RCLONE PW" RCLONE_PW
+sudo ls >/dev/null 2>/dev/null
+read -p "RCLONE PW: >>> " RCLONE_PW
 export RCLONE_PW="$RCLONE_PW"
 
 #countdown 1
+$MY_SUDO mkdir /home/abraxas/.config
+$MY_SUDO mkdir /home/abraxas/.config/rclone
 $MY_SUDO mkdir /home/restic >/dev/null 2>/dev/null
 $MY_SUDO chown abraxas: /home -R
-$MY_SUDO apt install xclip -y 2>/dev/null
-#echo 
-#echo execute on current computer
-#echo rclone copy /home/abraxas/.config/rclone/rclone.conf razer:webshare2 -P; 
-#echo rclone copy /home/abraxas/.config/rclone/rclone.conf razer:webshare2 -P | xclip
-#echo; read -p BUTTON me
-########################################################################################
 $MY_SUDO apt-get update -y 2>/dev/null
-$MY_SUDO apt install figlet p7zip-full curl 2>/dev/null
+$MY_SUDO apt install xclip -y 2>/dev/null
+$MY_SUDO apt install rclone figlet p7zip-full curl 2>/dev/null
 
 # webdav razer
 #curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
@@ -103,8 +100,10 @@ rm -rf /home/abraxas/start5
 $MY_SUDO apt install -y git >/dev/null 2>/dev/null
 git config --global user.name abraxas678
 git config --global user.email abraxas678@gmail.com
+figlet clone
 git clone https://github.com/abraxas678/start5.git 
 cd $HOME/start5
+figlet git setup
 git remote add origin git@github.com:abraxas678/start5.git
 git remote set-url origin git@github.com:abraxas678/start5.git
 echo; figlet DONE; echo
@@ -112,10 +111,15 @@ cd /home/abraxas/start5
 source /home/abraxas/start5/color.dat
 source /home/abraxas/start5/path.dat
 chmod +x *.sh
+figlet BASHFUL INSTALL
 ./bashful.sh
+figlet TAILSCALE install
 source /home/abraxas/start5/tailscale.sh
 
+figlet ">>> EXECUTE ON ALREADY SETUP PC:" 
 echo ">>> EXECUTE ON ALREADY SETUP PC:" 
+echo $MY_SUDO tailscale file cp ~/.config/rclone/rclone.conf $($MY_SUDO tailscale status | grep $($MY_SUDO tailscale ip | head -n 1)  | awk '{ print $2 }'): | xclip
+echo xclip done; echo
 echo $MY_SUDO tailscale file cp ~/.config/rclone/rclone.conf $($MY_SUDO tailscale status | grep $($MY_SUDO tailscale ip | head -n 1)  | awk '{ print $2 }'):
 echo
 read -p BUTTON me
@@ -123,12 +127,17 @@ cd /home/abraxas/.config/rclone/
 echo; echo $MY_SUDO tailscale file get .
 $MY_SUDO tailscale file get .
 echo done
-cd $HOME/start5
+figlet rclone selfupdate
+rclone selfupdate
+figlet done
+cd /home/abraxas/start5
 echo; figlet SSH COPY; echo
-
+sleep 1
 echo rclone copy df:.ssh $HOME/.ssh -P
 rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PW"
 chmod 500 $HOME/.ssh -R
+figlet SSH done
+echo
 rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PW"
 rclone copy df:.zsh.env  $HOME -P --password-command="echo $RCLONE_PW"
 rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
