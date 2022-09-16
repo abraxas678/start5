@@ -5,7 +5,7 @@ myspeed="0.5"
 export DISPLAY=100.101.117.77:0.0
 #######################################################
 clear
-echo "version 234"
+echo "version 235"
 sleep $myspeed
 sleep 3
 #######################################################
@@ -116,6 +116,7 @@ figlet git setup
 git remote add origin git@github.com:abraxas678/start5.git 2>/dev/null
 git remote set-url origin git@github.com:abraxas678/start5.git
 echo; figlet DONE; echo
+sleep 1; echo
 cd /home/abraxas/start5
 source /home/abraxas/start5/color.dat
 source /home/abraxas/start5/path.dat
@@ -123,7 +124,8 @@ chmod +x *.sh
 figlet TAILSCALE install
 sleep 1
 source /home/abraxas/start5/tailscale.sh
-
+figlet done
+echo
 figlet ">>> EXECUTE ON ALREADY SETUP PC:" 
 echo ">>> EXECUTE ON ALREADY SETUP PC:"
 MY_SUDO=$(cat /home/abraxas/mysudo) 
