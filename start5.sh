@@ -4,7 +4,7 @@
 myspeed="0.5" 
 #######################################################
 clear
-echo "version 230"
+echo "version 232"
 sleep $myspeed
 sleep 3
 #######################################################
@@ -68,6 +68,7 @@ echo; sleep 1
 echo "CURRENT USER: $USER" 
 read -t 1 me
 MY_SUDO="sudo"
+echo $MY_SUDO >/home/abraxas/mysudo
 [[ $USER != "abraxas" ]] && [[ ! $(id -u abraxas) ]] && $MY_SUDO adduser abraxas && $MY_SUDO passwd abraxas && $MY_SUDO usermod -aG $MY_SUDO abraxas && su abraxas
 [[ $USER != "abraxas" ]] && su abraxas
 echo "CURRENT USER: $USER"
@@ -123,7 +124,8 @@ sleep 1
 source /home/abraxas/start5/tailscale.sh
 
 figlet ">>> EXECUTE ON ALREADY SETUP PC:" 
-echo ">>> EXECUTE ON ALREADY SETUP PC:" 
+echo ">>> EXECUTE ON ALREADY SETUP PC:"
+MY_SUDO=$(cat /home/abraxas/mysudo) 
 echo $MY_SUDO tailscale file cp ~/.config/rclone/rclone.conf $($MY_SUDO tailscale status | grep $($MY_SUDO tailscale ip | head -n 1)  | awk '{ print $2 }'): | xclip
 echo xclip done; echo
 echo $MY_SUDO tailscale file cp ~/.config/rclone/rclone.conf $($MY_SUDO tailscale status | grep $($MY_SUDO tailscale ip | head -n 1)  | awk '{ print $2 }'):
@@ -133,18 +135,22 @@ cd /home/abraxas/.config/rclone/
 echo; echo $MY_SUDO tailscale file get .
 $MY_SUDO tailscale file get .
 echo done
-figlet rclone selfupdate
-rclone selfupdate
+figlet rclone self-update
+rclone self-update
 figlet done
 cd /home/abraxas/start5
 echo; figlet SSH COPY; echo
 sleep 1
 echo rclone copy df:.ssh $HOME/ssh -P
 rclone copy df:.ssh $HOME/ssh -P --password-command="echo $RCLONE_PW"
-chmod 500 $HOME/ssh -R
+MY_SUDO=$(cat /home/abraxas/mysudo) 
+$MY_SUDO mv /home/abraxas/ssh/* /home/abraxas/.ssh/
+chmod 500 $HOME/.ssh -R
 figlet SSH done
 echo
+figlet .zsh.env
 rclone copy df:.zsh.env  $HOME -P --password-command="echo $RCLONE_PW"
+sleep 1; figlet .p10k.zsh
 rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
 source $HOME/.zsh.env
 sleep 1
