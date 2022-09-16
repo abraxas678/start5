@@ -138,7 +138,6 @@ rclone copy df:.ssh $HOME/ssh -P --password-command="echo $RCLONE_PW"
 chmod 500 $HOME/ssh -R
 figlet SSH done
 echo
-rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PW"
 rclone copy df:.zsh.env  $HOME -P --password-command="echo $RCLONE_PW"
 rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
 source $HOME/.zsh.env
@@ -178,6 +177,7 @@ cd /home/abraxas/start5
 chmod +x *.sh
 source /home/abraxas/start5/brew-main.sh
 source /home/abraxas/start5/brew-apps.sh
+/home/linuxbrew/.linuxbrew/bin/pueue rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PW"
 /home/linuxbrew/.linuxbrew/bin/pueue rclone copy df:bin $HOME/bin -P --password-command="echo $RCLONE_PW"
 source /home/abraxas/start5/apt-apps.sh
 source /home/abraxas/start5/python-apps.sh
