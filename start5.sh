@@ -44,9 +44,9 @@ pueue-init() {
   /home/linuxbrew/.linuxbrew/bin/pueue status >> /home/abraxas/tmp/pueuestatus.txt 2>> /home/abraxas/tmp/pueuestatus.txt
   # /home/linuxbrew/.linuxbrew/bin/pueue status
   [[ $(cat /home/abraxas/tmp/pueuestatus.txt) = *"Failed to initialize client"* ]] &&  /home/linuxbrew/.linuxbrew/bin/pueued -d && sleep 2 &&  /home/linuxbrew/.linuxbrew/bin/pueue status
-  [[ $(cat /home/abraxas/tmp/pueuestatus.txt) = *"Permission denied"* ]] && sudo chown -R abraxas: /run/user && sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueue &&  /home/linuxbrew/.linuxbrew/bin/pueued -d && sleep 2 &&  /home/linuxbrew/.linuxbrew/bin/pueue status
+  [[ $(cat /home/abraxas/tmp/pueuestatus.txt) = *"Permission denied"* ]] && $MY_SUDO chown -R abraxas: /run/user && $MY_SUDO chmod +x /home/linuxbrew/.linuxbrew/bin/pueue &&  /home/linuxbrew/.linuxbrew/bin/pueued -d && sleep 2 &&  /home/linuxbrew/.linuxbrew/bin/pueue status
   [[ $(cat /home/abraxas/tmp/pueuestatus.txt) = *"Please stop the daemon beforehand or delete the file manually"* ]] && x=1
-  [[ $(cat /home/abraxas/tmp/pueuestatus.txt | head -n5) = *"Group"* ]] && x=1 || sudo chown -R abraxas: /run/user && sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueue && sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueued && /home/linuxbrew/.linuxbrew/bin/pueued -d && /home/linuxbrew/.linuxbrew/bin/pueued -d
+  [[ $(cat /home/abraxas/tmp/pueuestatus.txt | head -n5) = *"Group"* ]] && x=1 || $MY_SUDO chown -R abraxas: /run/user && $MY_SUDO chmod +x /home/linuxbrew/.linuxbrew/bin/pueue && $MY_SUDO chmod +x /home/linuxbrew/.linuxbrew/bin/pueued && /home/linuxbrew/.linuxbrew/bin/pueued -d && /home/linuxbrew/.linuxbrew/bin/pueued -d
   sleep 1
   done
   rm -f /home/abraxas/tmp/pueuestatus.txt
@@ -67,7 +67,8 @@ echo "#####################################################################"
 echo; sleep 2
 echo "CURRENT USER: $USER" 
 read -t 1 me
-[[ $USER != "abraxas" ]] && [[ ! $(id -u abraxas) ]] && sudo adduser abraxas && sudo passwd abraxas && sudo usermod -aG sudo abraxas && su abraxas
+MY_SUDO="sudo"
+[[ $USER != "abraxas" ]] && [[ ! $(id -u abraxas) ]] && $MY_SUDO adduser abraxas && $MY_SUDO passwd abraxas && $MY_SUDO usermod -aG $MY_SUDO abraxas && su abraxas
 [[ $USER != "abraxas" ]] && su abraxas
 echo "CURRENT USER: $USER"
 [[ $USER != "abraxas" ]] && echo BUTTON && read me || read -t 1 me
@@ -76,17 +77,17 @@ read -p "RCLONE PW" RCLONE_PW
 export RCLONE_PW="$RCLONE_PW"
 
 #countdown 1
-sudo mkdir /home/restic >/dev/null 2>/dev/null
-sudo chown abraxas: /home -R
-sudo apt install xclip -y 2>/dev/null
+$MY_SUDO mkdir /home/restic >/dev/null 2>/dev/null
+$MY_SUDO chown abraxas: /home -R
+$MY_SUDO apt install xclip -y 2>/dev/null
 #echo 
 #echo execute on current computer
 #echo rclone copy /home/abraxas/.config/rclone/rclone.conf razer:webshare2 -P; 
 #echo rclone copy /home/abraxas/.config/rclone/rclone.conf razer:webshare2 -P | xclip
 #echo; read -p BUTTON me
 ########################################################################################
-sudo apt-get update -y 2>/dev/null
-sudo apt install figlet p7zip-full curl 2>/dev/null
+$MY_SUDO apt-get update -y 2>/dev/null
+$MY_SUDO apt install figlet p7zip-full curl 2>/dev/null
 
 # webdav razer
 #curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
@@ -99,7 +100,7 @@ echo; sleep 1
 ##### BASH START
 cd /home/abraxas
 rm -rf /home/abraxas/start5
-sudo apt install -y git >/dev/null 2>/dev/null
+$MY_SUDO apt install -y git >/dev/null 2>/dev/null
 git config --global user.name abraxas678
 git config --global user.email abraxas678@gmail.com
 git clone https://github.com/abraxas678/start5.git 
@@ -115,12 +116,12 @@ chmod +x *.sh
 source /home/abraxas/start5/tailscale.sh
 
 echo ">>> EXECUTE ON ALREADY SETUP PC:" 
-echo sudo tailscale file cp ~/.config/rclone/rclone.conf $(sudo tailscale status | grep $(sudo tailscale ip | head -n 1)  | awk '{ print $2 }'):
+echo $MY_SUDO tailscale file cp ~/.config/rclone/rclone.conf $($MY_SUDO tailscale status | grep $($MY_SUDO tailscale ip | head -n 1)  | awk '{ print $2 }'):
 echo
 read -p BUTTON me
 cd /home/abraxas/.config/rclone/
-echo; echo sudo tailscale file get .
-sudo tailscale file get .
+echo; echo $MY_SUDO tailscale file get .
+$MY_SUDO tailscale file get .
 echo done
 cd $HOME/start5
 echo; figlet SSH COPY; echo
@@ -147,16 +148,16 @@ echo "#####################################################################"
 figlet -f big system update and upgrade
 #echo "                   SYSTEM UPDATE AND UPGRADE"
 echo "#####################################################################"
-echo; echo "sudo apt-get update && sudo apt-get upgrade -y"; 
+echo; echo "$MY_SUDO apt-get update && $MY_SUDO apt-get upgrade -y"; 
 countdown 4
-/home/abraxas/start5/bashfuler.sh 'sudo apt-get update && sudo apt-get upgrade -y'
+/home/abraxas/start5/bashfuler.sh '$MY_SUDO apt-get update && $MY_SUDO apt-get upgrade -y'
 countdown 1
 
-/home/abraxas/start5/bashfuler.sh 'sudo apt install restic -y && sudo restic self-update'
+/home/abraxas/start5/bashfuler.sh '$MY_SUDO apt install restic -y && $MY_SUDO restic self-update'
 mkdir /home/abraxas/start5/restic
 
 figlet -f cybersmall getting rclone.conf
-$HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | sudo bash && cd $HOME/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
+$HOME/start5/bashfuler.sh 'curl https://rclone.org/install.sh | $MY_SUDO bash && cd $HOME/.config/rclone/ && wget https://ra.dmw.zone/rclone.conf'
 [[ $(ls -la rclone.conf  | awk '{ print $5 }') > '10000' ]] && echo "rclone.conf NOT valid" && sleep 3 && read me
 #rclone copy df:.ssh $HOME/.ssh -P --password-command="echo $RCLONE_PASS"
 #rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PASS"
@@ -213,16 +214,16 @@ exit
   #echo "$EDITOR=/usr/bin/nano" >> /home/abraxas/.bashrc
   source /home/abraxas/.bashrc
 >>>>>>> f5b0f3d7ef638c61324baf3715b3a9e8b92ee30f
-  /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title tmux tmuxiator --print "$(sudo apt-get install -y tmux tmuxinator)" 
+  /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title tmux tmuxiator --print "$($MY_SUDO apt-get install -y tmux tmuxinator)" 
   countdown 1
   ############  >>>>>>>>>>>>>>>>>>>>>>>   tmux new-session -d -s "start5" /home/abraxas/main_script.sh
   /home/linuxbrew/.linuxbrew/bin/rich -u --panel rounded --style green --panel-style blue --print "[2] INSTALL ZSH -- Oh-my-Zsh -- Antigen FRAMEWORK"; sleep $myspeed
   #############################################  [2] INSTALL ZSH -- Oh-my-Zsh -- Antigen FRAMEWORK
-  /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style green --panel-style blue --title "zsh php nodejs npm plocate" --print "$(pueue add -g system-setup --  sudo apt install -y zsh php nodejs npm firefox-esr plocate)"
+  /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style green --panel-style blue --title "zsh php nodejs npm plocate" --print "$(pueue add -g system-setup --  $MY_SUDO apt install -y zsh php nodejs npm firefox-esr plocate)"
   pueue add -g system-setup -- 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
   pueue add -g system-setup -- 'curl -L git.io/antigen > /home/abraxas/antigen.zsh'
 countdown 1
-/home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title unzip jq --print "$(sudo apt-get install unzip jq -y)"
+/home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title unzip jq --print "$($MY_SUDO apt-get install unzip jq -y)"
 
 trenner
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded -u --style green --panel-style blue --print "CHECKING ENVIRONMENT CONDITION:"; sleep $myspeed
@@ -235,7 +236,7 @@ then
   echo GPG_INSTALLED=1; sleep $myspeed
   GPG_INSTALLED=1
 ### >>> IF 2 O
-mykeycheck=$(sudo gpg --list-secret-keys)
+mykeycheck=$($MY_SUDO gpg --list-secret-keys)
 echo "MYKEYCHECK $mykeycheck"
   if [[ $mykeycheck -gt "0" ]]
   then
@@ -258,7 +259,7 @@ fi
 trenner
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style green --panel-style blue --print RCLONE -u
 /home/linuxbrew/.linuxbrew/bin/rich -u --print "tailscale get file"
-echo; sudo tailscale file get ~/.config/rclone/
+echo; $MY_SUDO tailscale file get ~/.config/rclone/
 countdown 1
 rclone copy df: /home/abraxas --max-depth 1 --include=".zsh.env" -P --update --password-command="cat /home/abraxas/rcpw"
 source ~/.zsh.env
@@ -268,7 +269,7 @@ rclone copy gd:dotfiles/myfilter.txt /home/abraxas -P --max-depth 1 --update --p
 rclone copy gd:dotfiles/bin/ /home/abraxas/bin -P --include="install-age.sh" --update --password-command="cat /home/abraxas/rcpw"
 /home/linuxbrew/.linuxbrew/bin/rich -u --print "bin copy"
 rclone copy df:bin/ /home/abraxas/bin -P --update --password-command="cat /home/abraxas/rcpw" --filter-from="/home/abraxas/myfilter.txt"
-sudo chmod +x /home/abraxas/bin/*
+$MY_SUDO chmod +x /home/abraxas/bin/*
 /home/linuxbrew/.linuxbrew/bin/rich -u --print "INSTALL AGE"
 /bin/bash /home/abraxas/bin/install-age.sh
 /home/linuxbrew/.linuxbrew/bin/rich -u --print ".config copy"
@@ -359,8 +360,8 @@ if [[ $RCLONE_INSTALL = "0" ]]
   cd /home/abraxas/start5
   echo PWD: $PWD
   echo; sleep $myspeed
-  #sudo apt install rclone -y
-  curl https://rclone.org/install.sh | sudo bash | tail -f -n5
+  #$MY_SUDO apt install rclone -y
+  curl https://rclone.org/install.sh | $MY_SUDO bash | tail -f -n5
 fi
 
 if [[ $RCLONE_CONFIG = "0" || RCLONE_GD = "0" ]]
@@ -442,8 +443,8 @@ if [[ $GPG_KEY_RKO = "1" || $GPG_KEY_ASC = "1" ]]
 then
   sleep $myspeed; echo; echo 'rclone copy gd:sec /home/abraxas/tmpgpginstall  --include "rko-*" --include="key.asc" --max-depth 1 --fast-list --skip-links'; echo; sleep $myspeed
   rclone copy gd:sec /home/abraxas/tmpgpginstall  --include "rko-*" --include="key.asc" --max-depth 1 --fast-list --skip-links; sleep $myspeed
-  sudo chown abraxas: /home/abraxas/tmpgpginstall -R
-  sudo chmod 777 /home/abraxas/tmpgpginstall -R
+  $MY_SUDO chown abraxas: /home/abraxas/tmpgpginstall -R
+  $MY_SUDO chmod 777 /home/abraxas/tmpgpginstall -R
   cd /home/abraxas/tmpgpginstall
   echo; echo "files downloaded:"; sleep $myspeed
   ls /home/abraxas/tmpgpginstall
@@ -451,7 +452,7 @@ then
   printf "${NC}"; printf "${BLUE2}"
   echo; echo "IMPORTING GPG FILES"; echo; sleep $myspeed
   printf "${NC}"; printf "${BLUE3}"
-  sudo gpg --import *
+  $MY_SUDO gpg --import *
   printf "${YELLOW}"; echo BUTTON10; 
   read -t 10 me 
   rm -rf /home/abraxas/tmpgpginstall
@@ -470,10 +471,10 @@ then
       printf "${YELLOW}"
       echo "starting decryption"; sleep $myspeed
       printf "${NC}"; printf "${BLUE3}"
-      echo "sudo gpg --decrypt rclone_secure_setup2gd.sh.asc > rclonesetup.sh"; sleep $myspeed
-      sudo gpg --decrypt rclone_secure_setup2gd.sh.asc > rclonesetup.sh; sleep $myspeed
+      echo "$MY_SUDO gpg --decrypt rclone_secure_setup2gd.sh.asc > rclonesetup.sh"; sleep $myspeed
+      $MY_SUDO gpg --decrypt rclone_secure_setup2gd.sh.asc > rclonesetup.sh; sleep $myspeed
       cat rclonesetup.sh
-      sudo chmod +x *.sh
+      $MY_SUDO chmod +x *.sh
       printf "${NC}"; printf "${BLUE2}"
       echo; echo RCLONESETUP VIA SCRIPT STARTING; echo; sleep $myspeed
       printf "${NC}"; printf "${BLUE3}"
@@ -492,14 +493,14 @@ rclone copy gd:dotfiles/.p10k.zsh /home/abraxas -P
 
 trenner SOFTWARE INSTALL
 countdown 1
-/home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- sudo apt-get install restic exa wget -y
+/home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- $MY_SUDO apt-get install restic exa wget -y
 ###############################################################################  [6]
 echo
 trenner SSH SETUP
 countdown 1
 ###############################################################################  [7] SETUP SSH
-/home/linuxbrew/.linuxbrew/bin/rich -u --style green --panel-style blue --panel rounded --title "sudo ssh -T git@github.com" --print "$(sudo ssh -T git@github.com)"
-#sudo ssh -T git@github.com
+/home/linuxbrew/.linuxbrew/bin/rich -u --style green --panel-style blue --panel rounded --title "$MY_SUDO ssh -T git@github.com" --print "$($MY_SUDO ssh -T git@github.com)"
+#$MY_SUDO ssh -T git@github.com
 countdown 1
 echo; trenner "successfull? (y/N)" --style red 
 read -n 1 sshresult 
@@ -523,7 +524,7 @@ else
   #gpg --decrypt id_rsa.asc > id_rsa
   #rm id*.asc
 fi
-  sudo mkdir /home/abraxas/.ssh >/dev/null 2>/dev/null
+  $MY_SUDO mkdir /home/abraxas/.ssh >/dev/null 2>/dev/null
   mv id_rsa /home/abraxas/.ssh
   trenner "SETUP SSH FOLDER RIGHTS"
   echo; sleep $myspeed
@@ -532,14 +533,14 @@ trenner "G SSH AGENT"
 sleep $myspeed
 eval `ssh-agent -s`
 trenner "SETTING FOLDER PERMISSIONS"; sleep $myspeed
-sudo chmod 400 ~/.ssh/* -R
+$MY_SUDO chmod 400 ~/.ssh/* -R
 ssh-add ~/.ssh/id_rsa
-sudo chmod 700 ~/.ssh
-sudo chmod 644 ~/.ssh/authorized_keys
-sudo chmod 644 ~/.ssh/known_hosts
-sudo chmod 644 ~/.ssh/config &>/dev/null
-sudo chmod 600 ~/.ssh/id_rsa
-sudo chmod 644 ~/.ssh/id_rsa.pub
+$MY_SUDO chmod 700 ~/.ssh
+$MY_SUDO chmod 644 ~/.ssh/authorized_keys
+$MY_SUDO chmod 644 ~/.ssh/known_hosts
+$MY_SUDO chmod 644 ~/.ssh/config &>/dev/null
+$MY_SUDO chmod 600 ~/.ssh/id_rsa
+$MY_SUDO chmod 644 ~/.ssh/id_rsa.pub
 echo
 #printf "${LILA}"; printf "${UL1}"
 #echo "[9] RESTORE LATEST RESTIC SNAPSHOT"; sleep $myspeed; echo 
@@ -579,9 +580,9 @@ echo
 #do
 #if [[ $myrestore = "y" ]]
 #then
-#  sudo rm -rf /tmp-restic-restore
-#  sudo mkdir /tmp-restic-restore
-#  sudo chmod 777 /tmp-restic-restore -R 
+#  $MY_SUDO rm -rf /tmp-restic-restore
+#  $MY_SUDO mkdir /tmp-restic-restore
+#  $MY_SUDO chmod 777 /tmp-restic-restore -R 
 #  printf "${NC}"; printf "${BLUE2}"; echo;
 #  echo; echo "RESTIC TO TMP FOLDER /tmp-restic-restore"; echo; sleep $myspeed
 #  printf "${NC}"; printf "${YELLOW}"
@@ -616,7 +617,7 @@ echo
 #  mytext="please approve and select COPY MODE"
 #  curl -s "https://maker.ifttt.com/trigger/tts/with/key/4q38KZvz7CwD5_QzdUZHq?value1=$mytext"
 #  printf "${YELLOW}"; echo BUTTON; printf "${BLUE3}"; 
-#  sudo chmod 777 /tmp-restic-restore -R 
+#  $MY_SUDO chmod 777 /tmp-restic-restore -R 
   #         --ignore-existing        Skip all files that exist on destination
   #   -u, --update      Skip files that are newer on the destination
 #  printf "${LILA}"; printf "${UL1}"
@@ -637,7 +638,7 @@ echo
 #  echo;  printf "${BLUE2} >>>> "; read -n 1 mymode; echo; echo
 #  printf "${NC}"; printf "${BLUE3}"
 #  x=0
-#  sudo chmod 777 /tmp-restic-restore -R
+#  $MY_SUDO chmod 777 /tmp-restic-restore -R
 #  while [[ $x = "0" ]]
 #  do
 #    if [[ $mymode = "1" ]]
@@ -653,9 +654,9 @@ echo
 #    elif [[ $mymode = "3" ]]
 #    then
 #      x=1
-#      echo "sudo rclone sync $myresticuserfolder/ /home/abraxas/ -Pv --skip-links --fast-list"
+#      echo "$MY_SUDO rclone sync $myresticuserfolder/ /home/abraxas/ -Pv --skip-links --fast-list"
 #     # rclone sync /home/abraxas/ -Pv --skip-links --fast-list
-#      sudo rclone sync $myresticuserfolder/ /home/abraxas/ -Pv --skip-links --fast-list
+#      $MY_SUDO rclone sync $myresticuserfolder/ /home/abraxas/ -Pv --skip-links --fast-list
 #    else
 #      x=0
 #      printf "${RED}"
@@ -663,8 +664,8 @@ echo
 #    fi
 #  done
 
-#sudo chown $USER: /home/abraxas -R
-#sudo chown $USER: $myresticuserfolder -R 
+#$MY_SUDO chown $USER: /home/abraxas -R
+#$MY_SUDO chown $USER: $myresticuserfolder -R 
 
     # skip all, already existing:
   #rclone copy$myresticuserfolder /home/abraxas/ -Pv --update --ignore-existing --skip-links --fast-list
@@ -699,46 +700,46 @@ echo;  trenner "INSTALL KEEPASSXC"
 ########################################## KEEPASSXC [10]
 #  /home/abraxas/.cargo/bin/pueued -d
   pueue parallel 1 -g system-setup
-  pueue add -g system-setup -- sudo add-apt-repository ppa:phoerious/keepassxc -y | tail -f -n5
-  pueue add -g system-setup -- sudo apt-get update | tail -f -n5
-  pueue add -g system-setup -- sudo apt-get dist-upgrade -y | tail -f -n5
-  pueue add -g system-setup -- sudo apt-get install -y keepassxc | tail -f -n5
+  pueue add -g system-setup -- $MY_SUDO add-apt-repository ppa:phoerious/keepassxc -y | tail -f -n5
+  pueue add -g system-setup -- $MY_SUDO apt-get update | tail -f -n5
+  pueue add -g system-setup -- $MY_SUDO apt-get dist-upgrade -y | tail -f -n5
+  pueue add -g system-setup -- $MY_SUDO apt-get install -y keepassxc | tail -f -n5
 echo
 trenner "[11] SOFTWARE INSTALLATION"
 ################################################ [11] SOFTWARE INSTALLATION
 
-/home/linuxbrew/.linuxbrew/bin/rich --panel square --print "INSTALL sudo apt-get install -y nano curl nfs-common xclip ssh-askpass jq taskwarrior android-tools-adb conky-all fd-find"
-/home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- sudo apt-get install -y nano curl nfs-common xclip ssh-askpass taskwarrior android-tools-adb conky-all fd-find
+/home/linuxbrew/.linuxbrew/bin/rich --panel square --print "INSTALL $MY_SUDO apt-get install -y nano curl nfs-common xclip ssh-askpass jq taskwarrior android-tools-adb conky-all fd-find"
+/home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- $MY_SUDO apt-get install -y nano curl nfs-common xclip ssh-askpass taskwarrior android-tools-adb conky-all fd-find
 trenner "INSTALL FONTS"
 ##################################################### [12] FONTS
   #https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
   curl -X POST -H "Content-Type: application/json" -d '{"myvar1":"foo","myvar2":"bar","myvar3":"foobar"}' "https://joinjoaomgcd.appspot.com/_ah/api/messaging/v1/sendPush?apikey=304c57b5ddbd4c10b03b76fa97d44559&deviceNames=razer,Chrome,ChromeRazer&text=play%20install%20this%20font&url=https%3A%2F%2Fgithub.com%2Fromkatv%2Fpowerlevel10k-media%2Fraw%2Fmaster%2FMesloLGS%2520NF%2520Regular.ttf&file=https%3A%2F%2Fgithub.com%2Fromkatv%2Fpowerlevel10k-media%2Fraw%2Fmaster%2FMesloLGS%2520NF%2520Regular.ttf&say=please%20install%20this%20font"
-  sudo apt update && sudo apt install -y zsh fonts-powerline xz-utils plocate
+  $MY_SUDO apt update && $MY_SUDO apt install -y zsh fonts-powerline xz-utils plocate
   ###mlocate  -----> in tmu aufsetzen
   ###### https://github.com/suin/git-remind
   # sleep $myspeed
 
 echo; trenner "SETUP NTFY" --panel heavy; sleep $myspeed
 ######################################################################### [13] NTFY
-curl -sSL https://archive.heckel.io/apt/pubkey.txt | sudo apt-key add -
-sudo apt install apt-transport-https -y | tail -f -n5
-sudo sh -c "echo 'deb [arch=amd64] https://archive.heckel.io/apt debian main' \
+curl -sSL https://archive.heckel.io/apt/pubkey.txt | $MY_SUDO apt-key add -
+$MY_SUDO apt install apt-transport-https -y | tail -f -n5
+$MY_SUDO sh -c "echo 'deb [arch=amd64] https://archive.heckel.io/apt debian main' \
     > /etc/apt/sources.list.d/archive.heckel.io.list"  | tail -f -n5
-sudo apt update | tail -f -n5
-sudo apt install ntfy -y | tail -f -n5
-#sudo systemctl enable ntfy | tail -f -n5
-#sudo systemctl start ntfy | tail -f -n5
+$MY_SUDO apt update | tail -f -n5
+$MY_SUDO apt install ntfy -y | tail -f -n5
+#$MY_SUDO systemctl enable ntfy | tail -f -n5
+#$MY_SUDO systemctl start ntfy | tail -f -n5
 
-#sudo mkdir /etc/systemd/system/ntfy-client.service.d
-#sudo sh -c 'cat > /etc/systemd/system/ntfy-client.service.d/override.conf' <<EOF
+#$MY_SUDO mkdir /etc/systemd/system/ntfy-client.service.d
+#$MY_SUDO sh -c 'cat > /etc/systemd/system/ntfy-client.service.d/override.conf' <<EOF
 #[Service]
 #User=$USER
 #Group=$USER
 #Environment="DISPLAY=:0" "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
 #EOF
 
-#sudo systemctl daemon-reload
-#sudo systemctl restart ntfy-client
+#$MY_SUDO systemctl daemon-reload
+#$MY_SUDO systemctl restart ntfy-client
 echo
 /home/linuxbrew/.linuxbrew/bin/rich -up --panel rounded --style blue --title NTFY --print "NTFY SETUP >>> DONE"
 
@@ -748,14 +749,14 @@ echo
 /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- pip install paho-mqtt; sleep $myspeed
 ########################################################### [15] DOCKER
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title docker --print "INSTALL DOCKER"; sleep $myspeed
-pueue add -g system-setup -- sudo apt-get install docker.io docker-compose -y
+pueue add -g system-setup -- $MY_SUDO apt-get install docker.io docker-compose -y
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --print "$(/home/linuxbrew/.linuxbrew/bin/pueue status | tail -f -n10)"
 #################################################### docker compose
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title "clean up" --print "AUTOREMOVE"; sleep $myspeed
 ################################################################# [18] CLEAN UP
 rm -f /home/abraxas/color.dat
 trenner AUTOREMOVE
-sudo apt autoremove -y
+$MY_SUDO apt autoremove -y
 
 #p /home/abraxas/start5/dotfiles/.zshrc /home/abraxas/
 #cp /home/abraxas/start5/dotfiles/.p10k.zsh /home/abraxas/
@@ -768,30 +769,30 @@ rm -rf $HME/start5
 echo
 trenner "INSTALL TASKWARRIOR"
 pip3 install taskwarrior-inthe.am | tail -f -n5
-sudo apt-get install cifs-utils -y | tail -f -n5
+$MY_SUDO apt-get install cifs-utils -y | tail -f -n5
 #echo; echo GOODSYNC; echo
 rm -rf .antigen
 printf "${NC}"
 cd /home/abraxas
 #wget https://www.goodsync.com/download/goodsync-linux-x86_64-release.run
 #chmod +x goodsync-linux-x86_64-release.run
-#sudo ./goodsync-linux-x86_64-release.run
-#sudo gsync /gs-account-enroll=abraxas678@gmail.com
-#sudo gsync /activate
- if [[ $(cat /root/.bashrc) = *"switching to [abraxas]"* ]]; then sudo echo "nothing to do"; else echo "echo 'switching to [abraxas] in 5 s'; read -t 5 me; su abraxas" >> /root/.bashrc; fi
+#$MY_SUDO ./goodsync-linux-x86_64-release.run
+#$MY_SUDO gsync /gs-account-enroll=abraxas678@gmail.com
+#$MY_SUDO gsync /activate
+ if [[ $(cat /root/.bashrc) = *"switching to [abraxas]"* ]]; then $MY_SUDO echo "nothing to do"; else echo "echo 'switching to [abraxas] in 5 s'; read -t 5 me; su abraxas" >> /root/.bashrc; fi
 
-curl -sSL https://archive.heckel.io/apt/pubkey.txt | sudo apt-key add -
-sudo apt install apt-transport-https | tail -f -n5
-sudo sh -c "echo 'deb [arch=amd64] https://archive.heckel.io/apt debian main' > /etc/apt/sources.list.d/archive.heckel.io.list"  
-sudo apt update | tail -f -n5
+curl -sSL https://archive.heckel.io/apt/pubkey.txt | $MY_SUDO apt-key add -
+$MY_SUDO apt install apt-transport-https | tail -f -n5
+$MY_SUDO sh -c "echo 'deb [arch=amd64] https://archive.heckel.io/apt debian main' > /etc/apt/sources.list.d/archive.heckel.io.list"  
+$MY_SUDO apt update | tail -f -n5
 trenner "INSTALL PCOPY"
-sudo apt install pcopy | tail -f -n5
-#sudo pcopy setup
-sudo systemctl enable pcopy
-sudo systemctl start pcopy
+$MY_SUDO apt install pcopy | tail -f -n5
+#$MY_SUDO pcopy setup
+$MY_SUDO systemctl enable pcopy
+$MY_SUDO systemctl start pcopy
 
 /home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- pip install taskwarrior-inthe.am
-/home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- sudo apt-get install cifs-utils -y
+/home/linuxbrew/.linuxbrew/bin/pueue add -g system-setup -- $MY_SUDO apt-get install cifs-utils -y
 rm -rf /home/abraxas/.antigen
 #echo; echo GOODSYNC; echo
 printf "${NC}"
@@ -803,9 +804,9 @@ cd /home/abraxas
 #then
 #  wget https://www.goodsync.com/download/goodsync-linux-x86_64-release.run
 #  chmod +x goodsync-linux-x86_64-release.run
-#  sudo ./goodsync-linux-x86_64-release.run
-#  sudo gsync /gs-account-enroll=abraxas678@gmail.com
-#  sudo gsync /activate
+#  $MY_SUDO ./goodsync-linux-x86_64-release.run
+#  $MY_SUDO gsync /gs-account-enroll=abraxas678@gmail.com
+#  $MY_SUDO gsync /activate
 #fi
 #echo "copy files from gd:dotfiles"
 #read -t 10 me
@@ -823,7 +824,7 @@ cd /home/abraxas
 #rclone copy gd:dotfiles/bisync-filter.txt /home/abraxas -P
 #rclone bisync /home/abraxas/ gd:dotfiles --filters-file /home/abraxas/bisync-filter.txt -Pvvv --check-access --resync --skip-links
 /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --title "rclone copy df:.config /home/abraxas/.config --update -Pv" --print "$(rclone copy df:.config /home/abraxas/.config --update -Pv)"
-sudo chown $user: -R /home
+$MY_SUDO chown $user: -R /home
 mkdir /home/abraxas/tmp >/dev/null 2>/dev/null
 mkdir /home/abraxas/tmp/restic >/dev/null 2>/dev/null
 trenner "RESTIC MOUNT" --style red
