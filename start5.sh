@@ -3,6 +3,7 @@
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
 #######################################################
+clear
 echo "version 225"
 sleep $myspeed
 sleep 3
@@ -57,7 +58,6 @@ trenner() {
 }
 
 ################################## SCRIPT ###########################################
-clear
 cd /home/abraxas
 ts=$(date +"%s")
 export PATH=$PATH:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/syno/sbin:/usr/syno/bin:/usr/local/sbin:/usr/local/bin:/usr/path:/volume2/docker/utils/path:/home/abraxas/.local/bin:/home/abraxas/bin:/home/markus/.cargo/bin:/home/abraxas/.cargo/bin:/home/abraxas/.local/bin/:/home/abraxas/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:/volume1/homes/abraxas678/bin:/usr/local/bin:$PATH
