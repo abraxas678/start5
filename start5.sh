@@ -1,4 +1,5 @@
 #!/bin/bash 
+cd $HOME
 # $1 = # of seconds
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
