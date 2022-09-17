@@ -5,7 +5,7 @@ echo; sleep 2
 countdown 1
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-/home/abraxas/bashfuler.sh sudo apt-get install build-essential procps curl file git
+/home/abraxas/bashfuler.sh sudo apt-get install -y build-essential procps curl file git
 test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
