@@ -1,3 +1,4 @@
+#!/bin/bash
 echo $rcpw > ~/rcpw
 echo "#####################################################################"
 echo "                INSTALL LSOF AND SETUP TAILSCALE"
