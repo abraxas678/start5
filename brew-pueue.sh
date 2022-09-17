@@ -2,6 +2,7 @@
 echo "#####################################################################"
 echo "                           INSTALL PUEUE"
 echo "#####################################################################"
+/home/abraxas/start5/bashfuler.sh rclone copy df:bin/pueue-done.sh $HOME/bin
 echo;
   countdown 1
 /home/abraxas/bashfuler.sh  brew install pueue
