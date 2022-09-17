@@ -196,6 +196,7 @@ source /home/abraxas/start5/brew-main.sh
 read -p "BUTTON pueue" me
 source /home/abraxas/start5/brew-pueue.sh
 read -p "BUTTON brew apps" me
+/home/linuxbrew/.linuxbrew/bin/pueue add -- 'rclone copy df:.config $HOME/.config -P"'
 source /home/abraxas/start5/brew-apps.sh
 read -p "BUTTON .config" me
 /home/linuxbrew/.linuxbrew/bin/pueue add -- 'rclone copy df:.config $HOME/.config -P"'
