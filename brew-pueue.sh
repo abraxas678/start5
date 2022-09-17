@@ -23,7 +23,7 @@ echo;
 
 x=0
 rm -f $HOME/tmp/pueuestatus.txt
-pueue-init
+pueue-init 2>/dev/null
 
 rm -f $HOME/tmp/pueuestatus.txt
 #/home/linuxbrew/.linuxbrew/bin/pueue status | tails -n 10
