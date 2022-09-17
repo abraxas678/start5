@@ -25,6 +25,6 @@ rm -f $HOME/tmp/pueuestatus.txt
 pueue-init
 
 rm -f $HOME/tmp/pueuestatus.txt
-/home/linuxbrew/.linuxbrew/bin/pueue status | tails -n 10
+#/home/linuxbrew/.linuxbrew/bin/pueue status | tails -n 10
 trenner Pueue initialized
 countdown 1
