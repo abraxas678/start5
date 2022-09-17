@@ -1,8 +1,8 @@
 #!/bin/bash
-  ######################################## BREW BASED SOFTWARE ########################################
-  /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --panel-style blue -style green --print "INSTALL BREW BASED SOFTWARE"
+#  ######################################## BREW BASED SOFTWARE ########################################
+  /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --panel-style blue --style green --print "INSTALL BREW BASED SOFTWARE"
   countdown 1
-  pueue group add system-setup
+  pueue group add system-setup >/dev/null 2>/dev/null
   pueue parallel 1 -g system-setup 
   pueue add -g system-setup -- brew install thefuck
   pueue add -g system-setup -- brew install gcalcli
