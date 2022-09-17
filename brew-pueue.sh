@@ -2,7 +2,8 @@
 echo "#####################################################################"
 echo "                           INSTALL PUEUE"
 echo "#####################################################################"
-/home/abraxas/start5/bashfuler.sh rclone copy df:bin/pueue-done.sh $HOME/bin
+/home/abraxas/start5/bashfuler.sh rclone copy df:bin/pueue-done.sh $HOME/bin --password-command="echo $RCLONE_PW"
+
 echo;
   countdown 1
 /home/abraxas/bashfuler.sh  brew install pueue
@@ -13,8 +14,8 @@ echo;
   countdown 1
   sudo chown -R abraxas: /run/user
   sudo chown -R abraxas: /home
-  sudo chmod +x /home/abraxas/.cargo/bin/pueue
-  sudo chmod +x /home/abraxas/.cargo/bin/pueued
+  sudo chmod +x /home/abraxas/.cargo/bin/pueue >/dev/null 2>/dev/null
+  sudo chmod +x /home/abraxas/.cargo/bin/pueued >/dev/null 2>/dev/null
   sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueue
   sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueued
   source $HOME/start5/path.dat
