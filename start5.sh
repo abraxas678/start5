@@ -197,9 +197,9 @@ source /home/abraxas/start5/brew-pueue.sh
 read -p "BUTTON brew apps" me
 source /home/abraxas/start5/brew-apps.sh
 read -p "BUTTON .config" me
-/home/linuxbrew/.linuxbrew/bin/pueue rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PW"
+/home/linuxbrew/.linuxbrew/bin/pueue add -- rclone copy df:.config $HOME/.config -P --password-command="echo $RCLONE_PW"
 read -p "BUTTON bin copy" me
-/home/linuxbrew/.linuxbrew/bin/pueue rclone copy df:bin $HOME/bin -P --password-command="echo $RCLONE_PW"
+/home/linuxbrew/.linuxbrew/bin/pueue add -- rclone copy df:bin $HOME/bin -P --password-command="echo $RCLONE_PW"
 read -p "BUTTON apt apps" me
 source /home/abraxas/start5/apt-apps.sh
 read -p "BUTTON python apps" me
