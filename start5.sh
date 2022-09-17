@@ -77,6 +77,7 @@ echo "CURRENT USER: $USER"
 sudo ls >/dev/null 2>/dev/null
 read -p "RCLONE PW: >>> " RCLONE_PW
 export RCLONE_PW="$RCLONE_PW"
+export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
 clear
 #countdown 1
 $MY_SUDO mkdir /home/abraxas/.config >/dev/null 2>/dev/null
@@ -197,9 +198,9 @@ source /home/abraxas/start5/brew-pueue.sh
 read -p "BUTTON brew apps" me
 source /home/abraxas/start5/brew-apps.sh
 read -p "BUTTON .config" me
-/home/linuxbrew/.linuxbrew/bin/pueue add -- 'rclone copy df:.config $HOME/.config -P --password-command=\"echo $RCLONE_PW\"'
+/home/linuxbrew/.linuxbrew/bin/pueue add -- 'rclone copy df:.config $HOME/.config -P"'
 read -p "BUTTON bin copy" me
-/home/linuxbrew/.linuxbrew/bin/pueue add -- 'rclone copy df:bin $HOME/bin -P --password-command=\"echo $RCLONE_PW\"'
+/home/linuxbrew/.linuxbrew/bin/pueue add -- 'rclone copy df:bin $HOME/bin -P'
 read -p "BUTTON apt apps" me
 source /home/abraxas/start5/apt-apps.sh
 read -p "BUTTON python apps" me
