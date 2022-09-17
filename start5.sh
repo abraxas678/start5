@@ -7,7 +7,6 @@ export DISPLAY=100.101.117.77:0.0
 clear
 echo "version 235"
 sleep $myspeed
-sleep 3
 #######################################################
 
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
@@ -87,6 +86,7 @@ $MY_SUDO chown abraxas: /home -R
 cd /home/abraxas
 echo; echo BASHFUL INSTALL
 sleep 1
+clear
 bash <(curl -s https://raw.githubusercontent.com/abraxas678/start5/master/bashful.sh)
 cd /home/abraxas
 wget https://raw.githubusercontent.com/abraxas678/start5/master/bashfuler.sh
@@ -109,7 +109,7 @@ rm -rf /home/abraxas/start5
 /home/abraxas/bashfuler.sh $MY_SUDO apt install -y git >/dev/null 2>/dev/null
 git config --global user.name abraxas678
 git config --global user.email abraxas678@gmail.com
-figlet clone
+echo; figlet clone
 /home/abraxas/bashfuler.sh git clone https://github.com/abraxas678/start5.git 
 cd $HOME/start5
 figlet git setup
@@ -133,7 +133,7 @@ echo $MY_SUDO tailscale file cp ~/.config/rclone/rclone.conf $($MY_SUDO tailscal
 echo xclip done; echo
 echo $MY_SUDO tailscale file cp ~/.config/rclone/rclone.conf $($MY_SUDO tailscale status | grep $($MY_SUDO tailscale ip | head -n 1)  | awk '{ print $2 }'):
 echo
-read -p BUTTON me
+read -p BUTTON -t 600 me
 cd /home/abraxas/.config/rclone/
 echo; echo $MY_SUDO tailscale file get .
 $MY_SUDO tailscale file get .
