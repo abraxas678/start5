@@ -194,20 +194,20 @@ cd /home/abraxas/start5
 chmod +x *.sh
 figlet BREW main INSTALL
 source /home/abraxas/start5/brew-main.sh
-read -p "BUTTON pueue" me
+read -t 5 -p "BUTTON pueue" me
 source /home/abraxas/start5/brew-pueue.sh
-read -p "BUTTON brew apps" me
-/home/linuxbrew/.linuxbrew/bin/pueue add -- 'rclone copy df:.config $HOME/.config -P"'
+read -t 5 -p "BUTTON brew apps" me
+/home/linuxbrew/.linuxbrew/bin/pueue add -- rclone copy df:.config $HOME/.config -P
 source /home/abraxas/start5/brew-apps.sh
-read -p "BUTTON .config" me
+read -t 5 -p "BUTTON .config" me
 /home/linuxbrew/.linuxbrew/bin/pueue add -- 'rclone copy df:.config $HOME/.config -P"'
-read -p "BUTTON bin copy" me
+read -t 5 -p "BUTTON bin copy" me
 /home/linuxbrew/.linuxbrew/bin/pueue add -- 'rclone copy df:bin $HOME/bin -P'
-read -p "BUTTON apt apps" me
+read -t 5 -p "BUTTON apt apps" me
 source /home/abraxas/start5/apt-apps.sh
-read -p "BUTTON python apps" me
+read -t 5 -p "BUTTON python apps" me
 source /home/abraxas/start5/python-apps.sh
-read -p "BUTTON ssh" me
+read -t 5 -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
 /usr/bin/restic snapshots -r rclone:snas:bakup/restic2
 
