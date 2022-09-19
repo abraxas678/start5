@@ -83,10 +83,6 @@ figlet TAILSCALE install
 sleep 1
 source /home/abraxas/start5/tailscale.sh
 figlet done
-read -p "RCLONE PW: >>> " RCLONE_PW
-export RCLONE_PW="$RCLONE_PW"
-export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
-clear
 echo
 figlet ">>> EXECUTE ON ALREADY SETUP PC:" 
 echo ">>> EXECUTE ON ALREADY SETUP PC:"
@@ -118,6 +114,10 @@ rclone copy df:.zsh.env  $HOME -P --password-command="echo $RCLONE_PW"
 sleep 1; figlet .p10k.zsh
 rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
 source $HOME/.zsh.env
+read -p "RCLONE PW: >>> " RCLONE_PW
+export RCLONE_PW="$RCLONE_PW"
+export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
+clear
 read -t 5 -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
 sleep 1
