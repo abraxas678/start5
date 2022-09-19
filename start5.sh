@@ -7,7 +7,7 @@ myspeed="0.5"
 export DISPLAY=192.168.0.188:0.0 
 #######################################################
 clear
-echo "version 242"
+echo "version 243"
 sleep $myspeed
 #######################################################
 
@@ -53,9 +53,6 @@ chmod +x $HOME/start5/*.sh
 /home/abraxas/bashfuler.sh $MY_SUDO apt-get update -y 2>/dev/null
 /home/abraxas/bashfuler.sh $MY_SUDO apt install xclip -y 2>/dev/null
 /home/abraxas/bashfuler.sh $MY_SUDO apt install rclone figlet p7zip-full curl 2>/dev/null
-/home/abraxas/bashfuler.sh $HOME/start5/age.sh
-mkdir $HOME/bin >/dev/null 2>/dev/null
-cp $HOME/start5/age.sh $HOME/bin
 # webdav razer
 #curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
 echo; 
@@ -73,6 +70,9 @@ git config --global user.email abraxas678@gmail.com
 echo; figlet clone
 /home/abraxas/bashfuler.sh git clone https://github.com/abraxas678/start5.git 
 cd $HOME/start5
+/home/abraxas/bashfuler.sh $HOME/start5/age.sh
+mkdir $HOME/bin >/dev/null 2>/dev/null
+cp $HOME/start5/age.sh $HOME/bin
 figlet git setup
 git remote add origin git@github.com:abraxas678/start5.git 2>/dev/null
 git remote set-url origin git@github.com:abraxas678/start5.git
