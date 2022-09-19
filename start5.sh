@@ -7,7 +7,7 @@ myspeed="0.5"
 export DISPLAY=192.168.0.188:0.0 
 #######################################################
 clear
-echo "version 239"
+echo "version 240"
 sleep $myspeed
 #######################################################
 
@@ -15,7 +15,7 @@ sleep $myspeed
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
 mkdir /home/abraxas/tmp >/dev/null 2>/dev/null
 
-source $PWD/functions.sh
+source $(curl https://raw.githubusercontent.com/abraxas678/start5/master/functions.sh)
 ################################## SCRIPT ###########################################
 cd /home/abraxas
 ts=$(date +"%s")
