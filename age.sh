@@ -1,6 +1,10 @@
 #!/bin/bash
-AGE_VERSION=$(curl -s "https://api.github.com/repos/FiloSottile/age/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
-curl -Lo age.tar.gz "https://github.com/FiloSottile/age/releases/latest/download/age-v${AGE_VERSION}-linux-amd64.tar.gz"
-tar xf age.tar.gz
-sudo mv age/age /usr/local/bin
-sudo mv age/age-keygen /usr/local/bin
+#echo age.sh $(hostname)
+if [[ $(hostname) = "snas" ]]
+then
+#  echo "--> [processing via docker container] "
+#  echo "[-v /volume1/homes/abraxas678/:/home/abraxas/]"
+   sudo docker run -it -v /volume1/homes/abraxas678/:/home/abraxas/ abraxas678/age age $@
+else
+  [[ -f /usr/local/bin/age ]] &&  /usr/local/bin/age $@ || /usr/bin/age $@
+fi
