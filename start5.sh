@@ -3,10 +3,11 @@ cd $HOME
 # $1 = # of seconds
 # $@ = What to print after "Waiting n seconds"
 myspeed="0.5" 
-export DISPLAY=100.101.117.77:0.0
+#export DISPLAY=100.101.117.77:0.0
+export DISPLAY=192.168.0.188:0.0 
 #######################################################
 clear
-echo "version 238"
+echo "version 239"
 sleep $myspeed
 #######################################################
 
@@ -99,6 +100,10 @@ echo done
 figlet rclone self-update
 rclone self-update
 figlet done
+read -p "RCLONE PW: >>> " RCLONE_PW
+export RCLONE_PW="$RCLONE_PW"
+export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
+clear
 cd /home/abraxas/start5
 echo; figlet SSH COPY; echo
 sleep 1
@@ -114,10 +119,6 @@ rclone copy df:.zsh.env  $HOME -P --password-command="echo $RCLONE_PW"
 sleep 1; figlet .p10k.zsh
 rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
 source $HOME/.zsh.env
-read -p "RCLONE PW: >>> " RCLONE_PW
-export RCLONE_PW="$RCLONE_PW"
-export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
-clear
 read -t 5 -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
 sleep 1
