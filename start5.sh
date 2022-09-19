@@ -7,7 +7,7 @@ myspeed="0.5"
 export DISPLAY=192.168.0.188:0.0 
 #######################################################
 clear
-echo "version 243"
+echo "version 244"
 sleep $myspeed
 #######################################################
 
@@ -110,10 +110,11 @@ cd /home/abraxas/start5
 echo; figlet SSH COPY; echo
 sleep 1
 echo rclone copy df:.ssh $HOME/ssh -P
-rclone copy df:.ssh $HOME/ssh -P --password-command="echo $RCLONE_PW"
+rclone copy df:.ssh $HOME/ssh$ts -P --password-command="echo $RCLONE_PW"
 MY_SUDO=$(cat /home/abraxas/mysudo) 
-$MY_SUDO mv /home/abraxas/ssh/* /home/abraxas/.ssh/
+$MY_SUDO mv /home/abraxas/ssh$ts/* /home/abraxas/.ssh/
 chmod 500 $HOME/.ssh -R
+rm -rf $HOME/ssh$ts
 figlet SSH done
 echo
 figlet .zsh.env
