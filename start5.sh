@@ -157,6 +157,7 @@ figlet .zsh.env
 rclone copy df:.zsh.env  $HOME -P --password-command="echo $RCLONE_PW"
 sleep 1; figlet .p10k.zsh
 rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
+rclone copy df:bin/age.sh  $HOME/bin -P --password-command="echo $RCLONE_PW"
 source $HOME/.zsh.env
 read -t 5 -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
