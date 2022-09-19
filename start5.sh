@@ -95,7 +95,7 @@ wget https://raw.githubusercontent.com/abraxas678/start5/master/bashfuler.sh
 chmod +x *.sh
 /home/abraxas/bashfuler.sh $MY_SUDO apt-get update -y 2>/dev/null
 /home/abraxas/bashfuler.sh $MY_SUDO apt install xclip -y 2>/dev/null
-/home/abraxas/bashfuler.sh $MY_SUDO apt install rclone figlet p7zip-full curl 2>/dev/null
+/home/abraxas/bashfuler.sh $MY_SUDO apt install rclone figlet age p7zip-full curl 2>/dev/null
 
 # webdav razer
 #curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
@@ -158,6 +158,8 @@ rclone copy df:.zsh.env  $HOME -P --password-command="echo $RCLONE_PW"
 sleep 1; figlet .p10k.zsh
 rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
 source $HOME/.zsh.env
+read -t 5 -p "BUTTON ssh" me
+source /home/abraxas/start5/ssh.sh
 sleep 1
 echo "#####################################################################"
 figlet -f big checking hardware
@@ -175,6 +177,7 @@ echo "#####################################################################"
 echo; echo "$MY_SUDO apt-get update && $MY_SUDO apt-get upgrade -y"; 
 countdown 4
 /home/abraxas/start5/bashfuler.sh "$MY_SUDO apt-get update && $MY_SUDO apt-get upgrade -y"
+/home/abraxas/start5/bashfuler.sh rclone copy df:.config $HOME/.config & >/dev/null
 countdown 1
 
 /home/abraxas/start5/bashfuler.sh "$MY_SUDO apt install restic -y && $MY_SUDO restic self-update"
@@ -207,8 +210,6 @@ read -t 5 -p "BUTTON apt apps" me
 source /home/abraxas/start5/apt-apps.sh
 read -t 5 -p "BUTTON python apps" me
 source /home/abraxas/start5/python-apps.sh
-read -t 5 -p "BUTTON ssh" me
-source /home/abraxas/start5/ssh.sh
 cd $HOME
 rm -rf start5
 git clone git@github.com:abraxas678/github.git
