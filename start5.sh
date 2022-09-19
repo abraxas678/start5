@@ -7,7 +7,7 @@ myspeed="0.5"
 export DISPLAY=192.168.0.188:0.0 
 #######################################################
 clear
-echo "version 241"
+echo "version 242"
 sleep $myspeed
 #######################################################
 
@@ -15,7 +15,9 @@ sleep $myspeed
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
 mkdir /home/abraxas/tmp >/dev/null 2>/dev/null
 
-source $(curl https://raw.githubusercontent.com/abraxas678/start5/master/functions.sh)
+$(curl https://raw.githubusercontent.com/abraxas678/start5/master/functions.sh >functions.sh)
+source functions.sh
+rm -f functions.sh 
 ################################## SCRIPT ###########################################
 cd /home/abraxas
 ts=$(date +"%s")
@@ -85,11 +87,15 @@ sleep 1
 source /home/abraxas/start5/tailscale.sh
 figlet done
 echo
+read -p "RCLONE PW: >>> " RCLONE_PW
+export RCLONE_PW="$RCLONE_PW"
+export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
+clear
 figlet ">>> EXECUTE ON ALREADY SETUP PC:" 
 echo ">>> EXECUTE ON ALREADY SETUP PC:"
 MY_SUDO=$(cat /home/abraxas/mysudo) 
-echo $MY_SUDO tailscale file cp ~/.config/rclone/rclone.conf $($MY_SUDO tailscale status | grep $($MY_SUDO tailscale ip | head -n 1)  | awk '{ print $2 }'): | xclip
-echo xclip done; echo
+#echo $MY_SUDO tailscale file cp ~/.config/rclone/rclone.conf $($MY_SUDO tailscale status | grep $($MY_SUDO tailscale ip | head -n 1)  | awk '{ print $2 }'): | xclip
+#echo xclip done; echo
 echo $MY_SUDO tailscale file cp ~/.config/rclone/rclone.conf $($MY_SUDO tailscale status | grep $($MY_SUDO tailscale ip | head -n 1)  | awk '{ print $2 }'):
 echo
 read -p BUTTON -t 600 me
@@ -100,10 +106,6 @@ echo done
 figlet rclone self-update
 rclone self-update
 figlet done
-read -p "RCLONE PW: >>> " RCLONE_PW
-export RCLONE_PW="$RCLONE_PW"
-export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
-clear
 cd /home/abraxas/start5
 echo; figlet SSH COPY; echo
 sleep 1
