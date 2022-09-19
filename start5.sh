@@ -211,7 +211,7 @@ read -t 5 -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
 cd $HOME
 rm -rf start5
-git clone 
+git clone git@github.com:abraxas678/github.git
 /usr/bin/restic snapshots -r rclone:snas:bakup/restic2
 
 exit
