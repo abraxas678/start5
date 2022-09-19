@@ -212,6 +212,9 @@ source /home/abraxas/start5/ssh.sh
 cd $HOME
 rm -rf start5
 git clone git@github.com:abraxas678/github.git
-/usr/bin/restic snapshots -r rclone:snas:bakup/restic2
-
+[[ $(rclone ls snas: --max-depth 2 | grep home/RCLONE_TEST | wc -l) -eq 1  ]] && MY_RESTIC_REPO='rclone:snas:bakup/restic2' || MY_RESTIC_REPO='rclone:gd:restic2'
+echo; echo MY_RESTIC_REPO $MY_RESTIC_REPO; echo
+/usr/bin/restic snapshots -r $MY_RESTIC_REPO
+read -p 'which snapshot to /home/restic?' MY_SNAPSHOT
+restic restore $MY_SNAPSHOT --target /home/restic
 exit
