@@ -89,9 +89,13 @@ bash <(curl -s https://raw.githubusercontent.com/abraxas678/start5/master/bashfu
 cd /home/abraxas
 wget https://raw.githubusercontent.com/abraxas678/start5/master/bashfuler.sh
 chmod +x *.sh
+chmod +x $HOME/start5/*.sh
 /home/abraxas/bashfuler.sh $MY_SUDO apt-get update -y 2>/dev/null
 /home/abraxas/bashfuler.sh $MY_SUDO apt install xclip -y 2>/dev/null
 /home/abraxas/bashfuler.sh $MY_SUDO apt install rclone figlet p7zip-full curl 2>/dev/null
+/home/abraxas/bashfuler.sh $HOME/start5/age.sh
+mkdir $HOME/bin >/dev/null 2>/dev/null
+cp $HOME/start5/age.sh $HOME/bin
 # webdav razer
 #curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
 echo; 
@@ -156,9 +160,7 @@ figlet .zsh.env
 rclone copy df:.zsh.env  $HOME -P --password-command="echo $RCLONE_PW"
 sleep 1; figlet .p10k.zsh
 rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
-rclone copy df:bin/age.sh  $HOME/bin -P --password-command="echo $RCLONE_PW"
 source $HOME/.zsh.env
-/home/abraxas/bashfuler.sh age.sh
 read -t 5 -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
 sleep 1
