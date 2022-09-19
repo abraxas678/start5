@@ -95,8 +95,8 @@ wget https://raw.githubusercontent.com/abraxas678/start5/master/bashfuler.sh
 chmod +x *.sh
 /home/abraxas/bashfuler.sh $MY_SUDO apt-get update -y 2>/dev/null
 /home/abraxas/bashfuler.sh $MY_SUDO apt install xclip -y 2>/dev/null
-/home/abraxas/bashfuler.sh $MY_SUDO apt install rclone figlet age p7zip-full curl 2>/dev/null
-
+/home/abraxas/bashfuler.sh $MY_SUDO apt install rclone figlet p7zip-full curl 2>/dev/null
+/home/abraxas/bashfuler.sh  age.sh
 # webdav razer
 #curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
 echo; 
