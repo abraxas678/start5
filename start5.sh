@@ -92,7 +92,6 @@ chmod +x *.sh
 /home/abraxas/bashfuler.sh $MY_SUDO apt-get update -y 2>/dev/null
 /home/abraxas/bashfuler.sh $MY_SUDO apt install xclip -y 2>/dev/null
 /home/abraxas/bashfuler.sh $MY_SUDO apt install rclone figlet p7zip-full curl 2>/dev/null
-/home/abraxas/bashfuler.sh  age.sh
 # webdav razer
 #curl -s https://razer.dmw.zone/?cmd=UzNFcUUqdpbCDgDQVrwCy2dSfqNTvc4oMtLs3neXEEH4fp4Ymby2TJAZMkSLTTMMJCXjJTVM3KiRevC4vTDE7wXFeFtixT >/dev/null 2>/dev/null
 echo; 
@@ -159,6 +158,7 @@ sleep 1; figlet .p10k.zsh
 rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
 rclone copy df:bin/age.sh  $HOME/bin -P --password-command="echo $RCLONE_PW"
 source $HOME/.zsh.env
+/home/abraxas/bashfuler.sh age.sh
 read -t 5 -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
 sleep 1
