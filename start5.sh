@@ -209,6 +209,9 @@ read -t 5 -p "BUTTON python apps" me
 source /home/abraxas/start5/python-apps.sh
 read -t 5 -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
+cd $HOME
+rm -rf start5
+git clone 
 /usr/bin/restic snapshots -r rclone:snas:bakup/restic2
 
 exit

@@ -21,7 +21,7 @@ echo;
   sudo chmod +x /home/linuxbrew/.linuxbrew/bin/pueued
   source $HOME/start5/path.dat
   echo; echo "pueued -d"
-  /home/abraxas/bashfuler.sh /home/linuxbrew/.linuxbrew/bin/pueued -d && /home/linuxbrew/.linuxbrew/bin/pueue start
+  /home/linuxbrew/.linuxbrew/bin/pueued -d && /home/linuxbrew/.linuxbrew/bin/pueue start
 
 x=0
 rm -f $HOME/tmp/pueuestatus.txt
