@@ -76,10 +76,6 @@ echo "CURRENT USER: $USER"
 [[ $USER != "abraxas" ]] && echo BUTTON && read me || read -t 1 me
 
 sudo ls >/dev/null 2>/dev/null
-read -p "RCLONE PW: >>> " RCLONE_PW
-export RCLONE_PW="$RCLONE_PW"
-export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
-clear
 #countdown 1
 $MY_SUDO mkdir /home/abraxas/.config >/dev/null 2>/dev/null
 $MY_SUDO mkdir /home/abraxas/.config/rclone >/dev/null 2>/dev/null
@@ -127,6 +123,10 @@ figlet TAILSCALE install
 sleep 1
 source /home/abraxas/start5/tailscale.sh
 figlet done
+read -p "RCLONE PW: >>> " RCLONE_PW
+export RCLONE_PW="$RCLONE_PW"
+export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
+clear
 echo
 figlet ">>> EXECUTE ON ALREADY SETUP PC:" 
 echo ">>> EXECUTE ON ALREADY SETUP PC:"
