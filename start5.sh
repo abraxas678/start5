@@ -7,7 +7,7 @@ myspeed="0.5"
 export DISPLAY=192.168.0.188:0.0 
 #######################################################
 clear
-echo "version 246"
+echo "version 247"
 sleep $myspeed
 #######################################################
 
@@ -182,7 +182,7 @@ source /home/abraxas/start5/python-apps.sh
 cd $HOME
 rm -rf start5
 git clone git@github.com:abraxas678/github.git >/dev/null 2>/dev/null
-[[ $(rclone ls snas: --max-depth 2 | grep home/RCLONE_TEST | wc -l) -eq 1  ]] && MY_RESTIC_REPO='rclone:snas:bakup/restic2' || MY_RESTIC_REPO='rclone:gd:restic2'
+[[ $(rclone ls snas: --max-depth 2 | grep home/RCLONE_TEST | wc -l) -eq 1  ]] && MY_RESTIC_REPO='rclone:snas:backup/restic2' || MY_RESTIC_REPO='rclone:gd:restic2'
 echo
 /usr/bin/restic snapshots -r $MY_RESTIC_REPO
 echo; read -p 'which snapshot to /home/restic?' MY_SNAPSHOT
