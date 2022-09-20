@@ -7,7 +7,7 @@ myspeed="0.5"
 export DISPLAY=192.168.0.188:0.0 
 #######################################################
 clear
-echo "version 245"
+echo "version 246"
 sleep $myspeed
 #######################################################
 
@@ -15,7 +15,7 @@ sleep $myspeed
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
 mkdir /home/abraxas/tmp >/dev/null 2>/dev/null
 
-$(curl https://raw.githubusercontent.com/abraxas678/start5/master/functions.sh >functions.sh)
+curl https://raw.githubusercontent.com/abraxas678/start5/master/functions.sh >functions.sh
 source functions.sh
 rm -f functions.sh 
 ################################## SCRIPT ###########################################
@@ -119,18 +119,15 @@ chmod 500 $HOME/.ssh -R
 rm -rf $HOME/ssh$ts
 figlet SSH done
 echo
+##########################   RCLONE SOLLTE LAUFEN AB HIER
 figlet .zsh.env
-rclone copy df:.zsh.env  $HOME -P --password-command="echo $RCLONE_PW"
+rclone copy df:.zsh.env  $HOME -P 
 sleep 1; figlet .p10k.zsh
-rclone copy df:.p10k.zsh  $HOME -P --password-command="echo $RCLONE_PW"
+rclone copy df:.p10k.zsh  $HOME -P 
 source $HOME/.zsh.env
 read -t 5 -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
 sleep 1
-
-
-exit
-
 
 echo "#####################################################################"
 figlet -f big checking hardware
@@ -181,6 +178,7 @@ read -t 5 -p "BUTTON apt apps" me
 source /home/abraxas/start5/apt-apps.sh
 read -t 5 -p "BUTTON python apps" me
 source /home/abraxas/start5/python-apps.sh
+
 cd $HOME
 rm -rf start5
 git clone git@github.com:abraxas678/github.git
