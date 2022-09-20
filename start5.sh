@@ -7,7 +7,7 @@ myspeed="0.5"
 export DISPLAY=192.168.0.188:0.0 
 #######################################################
 clear
-echo "version 247"
+echo "version 248"
 sleep $myspeed
 #######################################################
 
@@ -122,6 +122,9 @@ echo
 ##########################   RCLONE SOLLTE LAUFEN AB HIER
 figlet .zsh.env
 rclone copy df:.zsh.env  $HOME -P 
+source .zsh.env
+read -t 5 me
+#########################################################################################
 sleep 1; figlet .p10k.zsh
 rclone copy df:.p10k.zsh  $HOME -P 
 source $HOME/.zsh.env
