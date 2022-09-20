@@ -89,10 +89,10 @@ sleep 1
 source /home/abraxas/start5/tailscale.sh
 figlet done
 echo
-read -p "RCLONE PW: >>> " RCLONE_PW
-export RCLONE_PW="$RCLONE_PW"
-export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
-clear
+#read -p "RCLONE PW: >>> " RCLONE_PW
+#export RCLONE_PW="$RCLONE_PW"
+#export RCLONE_PASSWORD_COMMAND="echo $RCLONE_PW"
+#clear
 figlet ">>> EXECUTE ON ALREADY SETUP PC:" 
 echo ">>> EXECUTE ON ALREADY SETUP PC:"
 MY_SUDO=$(cat /home/abraxas/mysudo) 
@@ -181,10 +181,10 @@ source /home/abraxas/start5/python-apps.sh
 
 cd $HOME
 rm -rf start5
-git clone git@github.com:abraxas678/github.git
+git clone git@github.com:abraxas678/github.git >/dev/null 2>/dev/null
 [[ $(rclone ls snas: --max-depth 2 | grep home/RCLONE_TEST | wc -l) -eq 1  ]] && MY_RESTIC_REPO='rclone:snas:bakup/restic2' || MY_RESTIC_REPO='rclone:gd:restic2'
-echo; echo MY_RESTIC_REPO $MY_RESTIC_REPO; echo
+echo
 /usr/bin/restic snapshots -r $MY_RESTIC_REPO
-read -p 'which snapshot to /home/restic?' MY_SNAPSHOT
+echo; read -p 'which snapshot to /home/restic?' MY_SNAPSHOT
 restic restore $MY_SNAPSHOT --target /home/restic
 exit
