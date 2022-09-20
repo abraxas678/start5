@@ -127,6 +127,11 @@ source $HOME/.zsh.env
 read -t 5 -p "BUTTON ssh" me
 source /home/abraxas/start5/ssh.sh
 sleep 1
+
+
+exit
+
+
 echo "#####################################################################"
 figlet -f big checking hardware
 #echo "                      CHECKING HARDWARE"
