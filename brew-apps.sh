@@ -4,6 +4,7 @@
   countdown 1
   pueue group add system-setup >/dev/null 2>/dev/null
   pueue parallel 1 -g system-setup 
+  pueue start -g system-setup 
   pueue add -g system-setup -- brew install gcalcli
   pueue add -g system-setup -- brew install fzf
   pueue add -g system-setup -- 'yes | $(brew --prefix)/opt/fzf/install'
