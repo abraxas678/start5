@@ -6,8 +6,6 @@
   pueue parallel 1 -g system-setup 
   pueue add -g system-setup -- brew install gcalcli
   pueue add -g system-setup -- brew install fzf
-  pueue add -g system-setup -- brew install age
-  pueue add -g system-setup -- brew install just 
   pueue add -g system-setup -- 'yes | $(brew --prefix)/opt/fzf/install'
   echo; pueue status -g system-setup 
   countdown 5

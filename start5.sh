@@ -70,8 +70,10 @@ git config --global user.email abraxas678@gmail.com
 echo; figlet clone
 /home/abraxas/bashfuler.sh git clone https://github.com/abraxas678/start5.git 
 cd $HOME/start5
-/home/abraxas/bashfuler.sh $HOME/start5/age.sh
+chmod +x *.sh
+/home/abraxas/bashfuler.sh $HOME/start5/age-install.sh
 mkdir $HOME/bin >/dev/null 2>/dev/null
+cp $HOME/start5/age-install.sh $HOME/bin
 cp $HOME/start5/age.sh $HOME/bin
 figlet git setup
 git remote add origin git@github.com:abraxas678/start5.git 2>/dev/null
