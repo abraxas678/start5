@@ -42,6 +42,11 @@ $MY_SUDO mkdir /home/abraxas/.config/rclone >/dev/null 2>/dev/null
 $MY_SUDO mkdir /home/restic >/dev/null 2>/dev/null
 $MY_SUDO chown abraxas: /home -R
 cd /home/abraxas
+################################## SERVER-COPY########################################
+echo; echo "EXECUTE ON SENDING SERVER:"
+echo; echo "bash <(curl -L bit.ly/rkosender)"
+echo
+################################## BASHFUL ###########################################
 echo; echo BASHFUL INSTALL
 sleep 1
 clear
