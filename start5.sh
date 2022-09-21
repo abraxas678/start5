@@ -45,7 +45,8 @@ cd /home/abraxas
 ################################## SERVER-COPY########################################
 echo; echo "EXECUTE ON SENDING SERVER:"
 echo; echo "bash <(curl -L bit.ly/rkosender)"
-echo
+echo; read -p "ENTER when done" me
+bash <(curl -s https://raw.githubusercontent.com/abraxas678/start5/master/collect_imp_files-receiver.sh)
 ################################## BASHFUL ###########################################
 echo; echo BASHFUL INSTALL
 sleep 1
