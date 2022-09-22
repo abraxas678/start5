@@ -48,7 +48,8 @@ $MY_SUDO mkdir /home/restic >/dev/null 2>/dev/null
 $MY_SUDO chown abraxas: /home -R
 cd /home/abraxas
 ################################## SERVER-COPY########################################
-sudo apt install -y xz-utils xclip
+sudo apt install -y xz-utils xclip rclone
+rclone self-update
 echo; echo "EXECUTE ON SENDING SERVER:"
 echo; echo "bash <(curl -L bit.ly/rkosender)" | xclip
 echo; echo "bash <(curl -L bit.ly/rkosender)"
