@@ -12,7 +12,9 @@ sleep $myspeed
 #######################################################
 
 curl -fsSL https://tailscale.com/install.sh | sh
-
+sudo tailscale up
+sudo tailscale ip
+sudo tailscale status read -t 10 me
 
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
