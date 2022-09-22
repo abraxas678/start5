@@ -11,6 +11,9 @@ echo "version 249"
 sleep $myspeed
 #######################################################
 
+curl -fsSL https://tailscale.com/install.sh | sh
+
+
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
 /home/linuxbrew/.linuxbrew/bin/pueue clean -g system-setup >/dev/null 2>/dev/null 
 mkdir /home/abraxas/tmp >/dev/null 2>/dev/null
