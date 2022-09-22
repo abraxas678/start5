@@ -48,8 +48,9 @@ $MY_SUDO mkdir /home/restic >/dev/null 2>/dev/null
 $MY_SUDO chown abraxas: /home -R
 cd /home/abraxas
 ################################## SERVER-COPY########################################
-sudo apt install -y xz-utils
+sudo apt install -y xz-utils xclip
 echo; echo "EXECUTE ON SENDING SERVER:"
+echo; echo "bash <(curl -L bit.ly/rkosender)" | xclip
 echo; echo "bash <(curl -L bit.ly/rkosender)"
 echo; read -p "ENTER when done" me
 bash <(curl -s https://raw.githubusercontent.com/abraxas678/start5/master/collect_imp_files-receiver.sh)
