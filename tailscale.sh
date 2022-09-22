@@ -6,6 +6,8 @@ echo "#####################################################################"
 echo; sleep 2
 /home/abraxas/start5/bashfuler.sh sudo apt install lsof -y
 /home/abraxas/start5/bashfuler.sh 'curl -fsSL https://tailscale.com/install.sh | sh' 
+sudo apt install lsof -y
+bash <(curl -fsSL https://tailscale.com/install.sh | sh) 
 sudo systemctl start tailscaled
 sudo tailscale up
 sudo tailscale up --ssh
