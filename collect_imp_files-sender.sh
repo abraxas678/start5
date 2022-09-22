@@ -13,7 +13,8 @@ cp $HOME/bin/*.sh $HOME/tmp/imp_files/home/bin/
 cp $HOME/* $HOME/tmp/imp_files/home/
 XZ_OPT=-9 tar --exclude="*/.git" --exclude-caches --exclude-vcs-ignores -Jcvf imp_files.tar.xz $HOME/tmp/imp_files
 
-rclone move $HOME/imp_files.tar.xz od:tmp -P
-MY_LINK=$(rclone link od:tmp/imp_files.tar.xz)
+rclone move $RCC/rclone.conf od:tmp -P
+MY_LINK=$(rclone link od:tmp/rclone.conf)
 echo $MY_LINK | xclip
 echo $MY_LINK
+rclone move $HOME/imp_files.tar.xz gdsec:tmp -P
