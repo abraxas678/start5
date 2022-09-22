@@ -48,6 +48,7 @@ $MY_SUDO mkdir /home/restic >/dev/null 2>/dev/null
 $MY_SUDO chown abraxas: /home -R
 cd /home/abraxas
 ################################## SERVER-COPY########################################
+sudo apt install -y xz-utils
 echo; echo "EXECUTE ON SENDING SERVER:"
 echo; echo "bash <(curl -L bit.ly/rkosender)"
 echo; read -p "ENTER when done" me
