@@ -66,9 +66,9 @@ echo; sleep 1
 ##### BASH START
 cd /home/abraxas
 rm -rf /home/abraxas/start5
-/home/abraxas/bashfuler.sh $MY_SUDO apt install -y git >/dev/null 2>/dev/null
-git config --global user.name abraxas678
-git config --global user.email abraxas678@gmail.com
+
+from git git-install.sh
+
 echo; figlet clone
 /home/abraxas/bashfuler.sh git clone https://github.com/abraxas678/start5.git 
 cd $HOME/start5
