@@ -2,14 +2,13 @@
 echo "#####################################################################"
 echo "                           INSTALL PUEUE"
 echo "#####################################################################"
-/home/abraxas/start5/bashfuler.sh rclone copy df:bin/pueue-done.sh $HOME/bin 
-/home/abraxas/start5/bashfuler.sh rclone copy df:bin/age.sh $HOME/bin 
+/home/abraxas/github/start5/bashfuler.sh rclone copy df:bin/pueue-done.sh $HOME/bin 
+/home/abraxas/github/start5/bashfuler.sh rclone copy df:bin/age.sh $HOME/bin 
 chmod +x /home/abraxas/bin/*.sh
 echo;
-  countdown 1
-/home/abraxas/bashfuler.sh  brew install pueue
+/home/abraxas/github/start5/bashfuler.sh  brew install pueue
   echo; echo "INSTALL RICH-CLI"
-/home/abraxas/bashfuler.sh  brew install rich
+/home/abraxas/github/start5/bashfuler.sh  brew install rich
   export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
   /home/linuxbrew/.linuxbrew/bin/rich --panel rounded --style blue --print "rich installed" -u
   countdown 1
