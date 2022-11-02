@@ -1,0 +1,134 @@
+2022/09/25 12:55:16 [1;39mTask full output: brew install rich[0m
+[91m/home/abraxas/.zshenv:.:1: no such file or directory: /home/abraxas/.cargo/env[0m
+==> Downloading https://ghcr.io/v2/homebrew/core/gdbm/manifests/1.23
+==> Downloading https://ghcr.io/v2/homebrew/core/gdbm/blobs/sha256:7d5728174c3de6c048a233459a1b8ac9e8c53645ca14962d9a1deb60fd58a568
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:7d5728174c3de6c048a233459a1b8ac9e8c53645ca14962d9a1deb60fd58a568?se=2022-09-25T13%3A05%3A00Z&sig=pTDYTCsg3jIb3mfNEPgqrHXmNkYcPpb9Gudinpbq6OQ%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/mpdecimal/manifests/2.5.1
+==> Downloading https://ghcr.io/v2/homebrew/core/mpdecimal/blobs/sha256:c5d64a4dd47dc1b66887c0cecd884f0848a801cb2f684cde0f4664e709574067
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:c5d64a4dd47dc1b66887c0cecd884f0848a801cb2f684cde0f4664e709574067?se=2022-09-25T13%3A05%3A00Z&sig=atBAuGbWj%2F4DBZ8cWUq4eb7xQE4Wbaz9CMhSC45YdGk%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/ca-certificates/manifests/2022-07-19_1
+==> Downloading https://ghcr.io/v2/homebrew/core/ca-certificates/blobs/sha256:9e0df163364a5ae07f3ee2cf39083cd74bcb38eeb5250b706e1c02f878d8d632
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:9e0df163364a5ae07f3ee2cf39083cd74bcb38eeb5250b706e1c02f878d8d632?se=2022-09-25T13%3A05%3A00Z&sig=utws3nTVNTwxZUD%2BuPEXqgcfmuQ8%2BwK4ufoJB%2Fmn%2FLo%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/openssl/1.1/manifests/1.1.1q
+==> Downloading https://ghcr.io/v2/homebrew/core/openssl/1.1/blobs/sha256:abec715f01eb20edda202463ca91403e3fa767afcba0fe732ef8e072bb99d2fd
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:abec715f01eb20edda202463ca91403e3fa767afcba0fe732ef8e072bb99d2fd?se=2022-09-25T13%3A05%3A00Z&sig=iVKnlfgdPw5dO%2BxGgqnD5prkRwc5QFYpbXuqWg9s2Ug%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/ncurses/manifests/6.3
+==> Downloading https://ghcr.io/v2/homebrew/core/ncurses/blobs/sha256:09c1d079d3b5cf1c855afa9da1fc7251234b73971d4cbe0bf7b9fca1cbea353c
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:09c1d079d3b5cf1c855afa9da1fc7251234b73971d4cbe0bf7b9fca1cbea353c?se=2022-09-25T13%3A05%3A00Z&sig=eDzNEg3juqA%2BX1W%2B2EATdFWqw4Yw571pttw9q496zbI%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/readline/manifests/8.1.2
+==> Downloading https://ghcr.io/v2/homebrew/core/readline/blobs/sha256:2b46aff4f720e0f15601aecb2efd4ae7c2a3454b2fad91b196728ed4ee4f12c3
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:2b46aff4f720e0f15601aecb2efd4ae7c2a3454b2fad91b196728ed4ee4f12c3?se=2022-09-25T13%3A05%3A00Z&sig=f1ho3FBAOvz7Grc6dVsNzeBtw6hQ5tJ1WhFmIjx7Wms%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/zlib/manifests/1.2.12_1
+==> Downloading https://ghcr.io/v2/homebrew/core/zlib/blobs/sha256:c8e13538da9684a2cd591d241ea9a2ca6d6761b15a685dbf38c8a8fe9e0a42ea
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:c8e13538da9684a2cd591d241ea9a2ca6d6761b15a685dbf38c8a8fe9e0a42ea?se=2022-09-25T13%3A05%3A00Z&sig=gHEfL%2FQsvek%2BC3yLeKbmaAfHF0hXKLkQp9Bk9RqNWAA%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/sqlite/manifests/3.39.3
+==> Downloading https://ghcr.io/v2/homebrew/core/sqlite/blobs/sha256:32b13296bfbcf213b279ab16dbcdb5151bd87733119b8c67123c6b453850a628
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:32b13296bfbcf213b279ab16dbcdb5151bd87733119b8c67123c6b453850a628?se=2022-09-25T13%3A05%3A00Z&sig=wgN4S7R5mqZIACPohTCwQ4SdaDPv%2FFaAVrgBb61H7L0%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/xz/manifests/5.2.6
+==> Downloading https://ghcr.io/v2/homebrew/core/xz/blobs/sha256:607a3d993f45efe858d3e4f002603e323a1b1f0c87b4db6fb57d1280f479809d
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:607a3d993f45efe858d3e4f002603e323a1b1f0c87b4db6fb57d1280f479809d?se=2022-09-25T13%3A05%3A00Z&sig=mhshs5DlS%2BDc%2BbVldtB%2B5EghtlrV3ArrlawEql7N%2F1M%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/bzip2/manifests/1.0.8-1
+==> Downloading https://ghcr.io/v2/homebrew/core/bzip2/blobs/sha256:c9e18abf0be3de0f15101a7411aa05a65807b0f9c8f68d634b91e36b42570087
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:c9e18abf0be3de0f15101a7411aa05a65807b0f9c8f68d634b91e36b42570087?se=2022-09-25T13%3A05%3A00Z&sig=AslcEnIAv%2FIQL1XybeFqzHvvgmj%2BtRr1lbCDAniongA%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/expat/manifests/2.4.8
+==> Downloading https://ghcr.io/v2/homebrew/core/expat/blobs/sha256:db13166d6a5bd0e19f82e9cd19f4a951ffff40cdfc29197e8143780444d0c204
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:db13166d6a5bd0e19f82e9cd19f4a951ffff40cdfc29197e8143780444d0c204?se=2022-09-25T13%3A05%3A00Z&sig=Eak46p%2BddkGHJ8Tx4fTwakGRXlzp3Mi3xc13kI8PIy4%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/libffi/manifests/3.4.3
+==> Downloading https://ghcr.io/v2/homebrew/core/libffi/blobs/sha256:453a11abc7235f9c475b4eb9ba9acec4b561ec6970c942ecfb8d25b4c68675f8
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:453a11abc7235f9c475b4eb9ba9acec4b561ec6970c942ecfb8d25b4c68675f8?se=2022-09-25T13%3A05%3A00Z&sig=SSNfq7TgyYEtWv0%2FYSdkiRZAnB6FJQ8F%2B5NI0kdLdK4%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/libxcrypt/manifests/4.4.28
+==> Downloading https://ghcr.io/v2/homebrew/core/libxcrypt/blobs/sha256:84269a82afe1a9e94ba6828c983a4b8e65d8d672d36d88232daac832017ab327
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:84269a82afe1a9e94ba6828c983a4b8e65d8d672d36d88232daac832017ab327?se=2022-09-25T13%3A05%3A00Z&sig=olgPbaHjQQ%2BPvtmIAITSJwtqRaR%2FOFdMkwXW%2FmZO098%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/unzip/manifests/6.0_8
+==> Downloading https://ghcr.io/v2/homebrew/core/unzip/blobs/sha256:baf15e19852a0f9756e3302fa6f3866eaeccc06730c9907bffc19f32861d64bf
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:baf15e19852a0f9756e3302fa6f3866eaeccc06730c9907bffc19f32861d64bf?se=2022-09-25T13%3A05%3A00Z&sig=3lEzKKzvg8wD7v3pb27fO72GEQnb%2BhfjUKbanzHo%2BKo%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/m4/manifests/1.4.19
+==> Downloading https://ghcr.io/v2/homebrew/core/m4/blobs/sha256:f6d1087a51e0ff2e582b3043a25a51b67971b2246cf65167ef3abf1230160f04
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:f6d1087a51e0ff2e582b3043a25a51b67971b2246cf65167ef3abf1230160f04?se=2022-09-25T13%3A05%3A00Z&sig=cHhU%2BNsTbWnGJklyFBe1s6wZaay8EFrC0vFtsIpEfb0%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/bison/manifests/3.8.2
+==> Downloading https://ghcr.io/v2/homebrew/core/bison/blobs/sha256:d708c29c7e44f28a4fa77d353ff7adfbe673b31cef6f24c3c384a03ba01b3608
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:d708c29c7e44f28a4fa77d353ff7adfbe673b31cef6f24c3c384a03ba01b3608?se=2022-09-25T13%3A05%3A00Z&sig=gqu3wckzpVjCtbY%2BBToAicw6oo3evzpRimG9KWwCqeU%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/krb5/manifests/1.20
+==> Downloading https://ghcr.io/v2/homebrew/core/krb5/blobs/sha256:17c3f6518fc7f836cd1bcc8ae0f2d8a8cc9d8ca063fa78d2faaf67158bf3318d
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:17c3f6518fc7f836cd1bcc8ae0f2d8a8cc9d8ca063fa78d2faaf67158bf3318d?se=2022-09-25T13%3A05%3A00Z&sig=xXsIrEGlGV7bVXfda37LXz9%2FXzkbQc8%2FvlR118ApSLM%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/libtirpc/manifests/1.3.3
+==> Downloading https://ghcr.io/v2/homebrew/core/libtirpc/blobs/sha256:26371c5e683f16a4b2ebf4475150672f76d45e3d43583c942fcb0e916be77dc3
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:26371c5e683f16a4b2ebf4475150672f76d45e3d43583c942fcb0e916be77dc3?se=2022-09-25T13%3A05%3A00Z&sig=S0J9IDOEwwWcZ3ZPDXSOrbnKli7AhGMmbBMOl8Ninio%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/libnsl/manifests/2.0.0_1
+==> Downloading https://ghcr.io/v2/homebrew/core/libnsl/blobs/sha256:ed70b285939e2ab21ba53d122ce2d4beab4cd0f9c86925c3d3a2cfb1b0eeecb3
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:ed70b285939e2ab21ba53d122ce2d4beab4cd0f9c86925c3d3a2cfb1b0eeecb3?se=2022-09-25T13%3A05%3A00Z&sig=I4VNBtjV7jXr0hebPpsO2z8Ywm3f722cspQ0aev2SLw%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/python/3.10/manifests/3.10.6_2
+==> Downloading https://ghcr.io/v2/homebrew/core/python/3.10/blobs/sha256:bdeff112ecc106278becf0a5930faff225171928bc3e1e2cbc1fed26dbd28b8a
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:bdeff112ecc106278becf0a5930faff225171928bc3e1e2cbc1fed26dbd28b8a?se=2022-09-25T13%3A05%3A00Z&sig=NH2eGolZt%2FTPFrtEv6PXG%2FLejL0Nc0dj%2FImrdSCroBM%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Downloading https://ghcr.io/v2/homebrew/core/rich-cli/manifests/1.8.0
+==> Downloading https://ghcr.io/v2/homebrew/core/rich-cli/blobs/sha256:f64aa766c298f4953ead63f9f7ad93bebe6f0891f6099b00636ff184dfaf17c0
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:f64aa766c298f4953ead63f9f7ad93bebe6f0891f6099b00636ff184dfaf17c0?se=2022-09-25T13%3A05%3A00Z&sig=AeMqknul44zkPXHHLyu1HsE9iN9ZM42HQREgLDrKG5A%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Installing dependencies for rich-cli: gdbm, mpdecimal, ca-certificates, openssl@1.1, ncurses, readline, zlib, sqlite, xz, bzip2, expat, libffi, libxcrypt, unzip, m4, bison, krb5, libtirpc, libnsl and python@3.10
+==> Installing rich-cli dependency: gdbm
+==> Pouring gdbm--1.23.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/gdbm/1.23: 40 files, 1.3MB
+==> Installing rich-cli dependency: mpdecimal
+==> Pouring mpdecimal--2.5.1.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/mpdecimal/2.5.1: 71 files, 2.4MB
+==> Installing rich-cli dependency: ca-certificates
+==> Pouring ca-certificates--2022-07-19_1.all.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/ca-certificates/2022-07-19_1: 3 files, 238.3KB
+==> Installing rich-cli dependency: openssl@1.1
+==> Pouring openssl@1.1--1.1.1q.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/openssl@1.1/1.1.1q: 8,411 files, 24.3MB
+==> Installing rich-cli dependency: ncurses
+==> Pouring ncurses--6.3.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/ncurses/6.3: 3,958 files, 9.9MB
+==> Installing rich-cli dependency: readline
+==> Pouring readline--8.1.2.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/readline/8.1.2: 48 files, 2.0MB
+==> Installing rich-cli dependency: zlib
+==> Pouring zlib--1.2.12_1.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/zlib/1.2.12_1: 12 files, 470.5KB
+==> Installing rich-cli dependency: sqlite
+==> Pouring sqlite--3.39.3.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/sqlite/3.39.3: 12 files, 5.2MB
+==> Installing rich-cli dependency: xz
+==> Pouring xz--5.2.6.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/xz/5.2.6: 150 files, 2.4MB
+==> Installing rich-cli dependency: bzip2
+==> Pouring bzip2--1.0.8.x86_64_linux.bottle.1.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/bzip2/1.0.8: 30 files, 549.8KB
+==> Installing rich-cli dependency: expat
+==> Pouring expat--2.4.8.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/expat/2.4.8: 21 files, 841.7KB
+==> Installing rich-cli dependency: libffi
+==> Pouring libffi--3.4.3.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/libffi/3.4.3: 18 files, 721.4KB
+==> Installing rich-cli dependency: libxcrypt
+==> Pouring libxcrypt--4.4.28.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/libxcrypt/4.4.28: 24 files, 361.8KB
+==> Installing rich-cli dependency: unzip
+==> Pouring unzip--6.0_8.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/unzip/6.0_8: 16 files, 597.2KB
+==> Installing rich-cli dependency: m4
+==> Pouring m4--1.4.19.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/m4/1.4.19: 39 files, 1.1MB
+==> Installing rich-cli dependency: bison
+==> Pouring bison--3.8.2.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/bison/3.8.2: 208 files, 5.0MB
+==> Installing rich-cli dependency: krb5
+==> Pouring krb5--1.20.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/krb5/1.20: 165 files, 5.2MB
+==> Installing rich-cli dependency: libtirpc
+==> Pouring libtirpc--1.3.3.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/libtirpc/1.3.3: 85 files, 1MB
+==> Installing rich-cli dependency: libnsl
+==> Pouring libnsl--2.0.0_1.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/libnsl/2.0.0_1: 18 files, 182.2KB
+==> Installing rich-cli dependency: python@3.10
+==> Pouring python@3.10--3.10.6_2.x86_64_linux.bottle.tar.gz
+==> /home/linuxbrew/.linuxbrew/Cellar/python@3.10/3.10.6_2/bin/python3.10 -m ensurepip
+==> /home/linuxbrew/.linuxbrew/Cellar/python@3.10/3.10.6_2/bin/python3.10 -m pip install -v --no-deps --no-index --upgrade --isolated --target=/home/linuxbrew/.linuxbrew/lib/python3.10/site-packages /home/linuxbrew/.linuxbrew/Cellar/python@3.10/3.10.6_2/lib/python3.10/ensurepip/_bundled/setuptools-63.4.3-py3-none-any.whl /home/linuxbrew/.linuxbrew/Cellar/python@3.10/3.10.6_2/lib/python3.10/ensurepip/_bundled/pip-22.2.2-py3-none-any.whl /home/linuxbrew/.linuxbrew/Cellar/python@3.10/3.10.6_2/libexec/wheel-0.37.1-py2.py3-none-any.whl
+🍺  /home/linuxbrew/.linuxbrew/Cellar/python@3.10/3.10.6_2: 2,665 files, 80.8MB
+==> Installing rich-cli
+==> Pouring rich-cli--1.8.0.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/rich-cli/1.8.0: 1,598 files, 19.6MB
+==> Running `brew cleanup rich-cli`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
