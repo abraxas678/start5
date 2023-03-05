@@ -1,0 +1,29 @@
+2022/09/25 12:54:37 [1;39mTask full output: brew install pueue[0m
+[91m/home/abraxas/.zshenv:.:1: no such file or directory: /home/abraxas/.cargo/env[0m
+[91mRunning `brew update --auto-update`...[0m
+[91m==> Homebrew is run entirely by unpaid volunteers. Please consider donating:[0m
+[91m  https://github.com/Homebrew/brew#donations[0m
+
+[91m==> Auto-updated Homebrew![0m
+[91mUpdated 1 tap (homebrew/core).[0m
+[91m==> New Formulae[0m
+[91mdynein[0m
+[91mpython-typing-extensions[0m
+
+==> Downloading https://ghcr.io/v2/homebrew/core/pueue/manifests/2.1.0
+==> Downloading https://ghcr.io/v2/homebrew/core/pueue/blobs/sha256:b86dcb78f19ae14358dae333087e1d54d1468280cacd2202baccda1da43174bf
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:b86dcb78f19ae14358dae333087e1d54d1468280cacd2202baccda1da43174bf?se=2022-09-25T13%3A00%3A00Z&sig=XiXlH0gyveFTLd%2BggR7QPejZ5BIC2%2FyfcyUC3Xr1wEQ%3D&sp=r&spr=https&sr=b&sv=2019-12-12
+==> Pouring pueue--2.1.0.x86_64_linux.bottle.tar.gz
+==> Caveats
+zsh completions have been installed to:
+  /home/linuxbrew/.linuxbrew/share/zsh/site-functions
+
+To restart pueue after an upgrade:
+  brew services restart pueue
+Or, if you don't want/need a background service you can just run:
+  /home/linuxbrew/.linuxbrew/opt/pueue/bin/pueued --verbose
+==> Summary
+🍺  /home/linuxbrew/.linuxbrew/Cellar/pueue/2.1.0: 14 files, 15MB
+==> Running `brew cleanup pueue`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).

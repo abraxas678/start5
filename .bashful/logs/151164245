@@ -1,0 +1,2 @@
+2022/09/25 12:53:28 [1;39mTask full output: rclone copy df:bin/age.sh /home/abraxas/bin[0m
+[91m/home/abraxas/.zshenv:.:1: no such file or directory: /home/abraxas/.cargo/env[0m
