@@ -1,0 +1,106 @@
+#!/usr/bin/env sh
+
+set -eu
+IFS=$' '
+OPTIND=1
+
+qfile="$HOME/.q"
+
+q_help() {
+  echo "q-queue v0.2.2"
+  echo "github.com/justincampbell/q-queue"
+  echo ""
+  echo "  Usage:"
+  echo "    q [COMMAND]  Queue command to run at a later time in this directory"
+  echo "    q -h         Show this help"
+  echo "    q -l         List queued commands"
+  echo "    q -r         Run queued commands"
+  echo "    q -s         Show number of queued commands, if any (put this in your profile)"
+  echo ""
+}
+
+q_list() {
+  [ ! -f "$qfile" ] || cat $qfile
+}
+
+q_run() {
+  if [ ! -f $qfile ]; then
+    echo "No commands queued"
+    exit 1
+  fi
+
+  color=$(tput setaf 3) # yellow
+  reset=$(tput sgr0)
+
+  cat $qfile | while read line; do
+    directory=$(echo $line | cut -f 1)
+    command=$(echo $line | cut -f 2 | cut -f 1 -d " ")
+    args=""
+
+    if echo "$line" | grep " " > /dev/null; then
+      args=$(echo $line | cut -f 2 | cut -f 2- -d " ")
+    fi
+
+    echo "$color$line$reset"
+
+    if [ -n "$args" ]; then
+      (cd "$directory" && $command $args)
+    else
+      (cd "$directory" && $command)
+    fi
+  done
+
+  rm -f $qfile
+}
+
+q_status() {
+  if [ -f $qfile ]; then
+    local count=$(cat $qfile | wc -l | sed "s/[^0-9]//g;s/^$/-1/;")
+    local plural="s"
+    if [ $count -eq 1 ]; then
+      local plural=""
+    fi
+    echo "q-queue: You have $count command$plural queued"
+  fi
+}
+
+q_write() {
+  echo "$PWD	$qcommand" >> $HOME/.q
+}
+
+while getopts "hlrs" opt; do
+  case "$opt" in
+    h)
+      q_help
+      exit
+      ;;
+    l)
+      q_list
+      exit
+      ;;
+    r)
+      q_run
+      exit
+      ;;
+    s)
+      q_status
+      exit
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+qcommand="$@"
+
+if [ -n "$qcommand" ]; then
+  q_write
+  exit
+fi
+
+if [ -f "$qfile" ] && grep -iq "	" $qfile; then
+  q_list
+else
+  q_help
+  exit 1
+fi
